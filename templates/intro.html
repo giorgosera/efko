@@ -1,44 +1,100 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Le fav and touch icons -->
+<link rel="shortcut icon" href="efko-static/docs/assets/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="efko-static/docs/assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="efko-static/docs/assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="efko-static/docs/assets/ico/apple-touch-icon-57-precomposed.png">
 
-
-</br>
-</br>
-</br>
-
-<div align="center">
-
-<img src="/static/imgs/logo.jpg" alt="logo" width="406" height="225" />
-<div class="txtSearchArea">
-	<form action="/timeline" style="float:left; position:absolute; width:550px;margin:0 auto;" method="post" align="center" name="keywords">
-	{% raw xsrf_form_html() %}
-		<div style= "margin-left:16px; margin-top:14px;  float:left;" align="center" >
-		   <input id="txtSearch" name="txtSearch" class="txtSearch" type="text" size="27" style="font-size:16pt;border: 0px; color: #596970;" 	value="Input your tag here" onclick="this.value=''"; style="float:left;" /> 
-		</div>
-
-		<input type="image" id="btnButton" style="float:right;" src="/static/imgs/button.jpg" value="submit"
-border="0" alt="searchbar" onmouseover="this.src='/static/imgs/buttonOver.jpg'" onmouseout="this.src='/static/imgs/button.jpg'"//>
-	
-
-
-	</form>
-	<div class="btnStyle">
-
-	</div>
-
-
-	<div style="font-size:14pt;font-family:'Verdana';margin-left:-30px; color:white;"> Clear, simple knowledge.
-	</div>
-</div>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">YouCover.Me</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#top">Top</a></li>
+          <li><a href="#contact">Submit Cover</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
 </div>
 
-</br>
+<div class="container">
 
-</br>
-</br>
-</br>
-</br>
-</br>
+  <!-- Main hero unit for a primary marketing message or call to action -->
+<div class="alert alert-info">
+  <a class="close" data-dismiss="alert">×</a>
+  <h1 class="alert-heading">Vote Now!</h4>
+  Here are two videos of <b>Ed Sheeran's</b> song <b>The A-Team</b>. Vote on your favourite video now to help discover the worlds next big pop star!
+</div>
+
+
+     <!-- Example row of columns -->
+   <div class="row">
+     <div class="span6">
+       <h2>Brad Kavangh</h2>
+<object width="100%" height="315">
+  <param name="movie"
+         value="https://www.youtube.com/v/Y4rFiG44zFU?version=3&autohide=1&showinfo=0"></param>
+  <param name="allowScriptAccess" value="always"></param>
+  <embed src="https://www.youtube.com/v/Y4rFiG44zFU?version=3&autohide=1&showinfo=0"
+         type="application/x-shockwave-flash"
+         allowscriptaccess="always"
+          width="100%" height="315"></embed>
+</object>
+        <p></p>
+       <p align="right"><a class="btn btn-success" href="#">&laquo; Vote for this Tune <i class="icon-ok-circle"></i></a></p>
+     </div>
+     <div class="span6">
+       <h2>Becky CJ</h2>
+<object width="100%" height="315">
+  <param name="movie"
+         value="https://www.youtube.com/v/ES62wpjX21Q?version=3&autohide=1&showinfo=0"></param>
+  <param name="allowScriptAccess" value="always"></param>
+  <embed src="https://www.youtube.com/v/ES62wpjX21Q?version=3&autohide=1&showinfo=0"
+         type="application/x-shockwave-flash"
+         allowscriptaccess="always"
+          width="100%" height="315"></embed>
+</object>
+        <p></p>
+       <p><a class="btn btn-success" href="#"><i class="icon-ok-circle"></i> Vote for this Tune &raquo;</a></p>
+    </div>
+   </div>
+
+   <hr>
+
+   <footer>
+     <p>&copy; YouCover.Me 2012</p>
+   </footer>
+
+ </div> <!-- /container -->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="efko-static/docs/assets/js/jquery.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-transition.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-alert.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-modal.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-dropdown.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-scrollspy.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-tab.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-tooltip.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-popover.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-button.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-collapse.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-carousel.js"></script>
+<script src="efko-static/docs/assets/js/bootstrap-typeahead.js"></script>
+
+
+
 {% end%}
 

@@ -8,25 +8,18 @@
 	<meta charset="utf-8"> 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	<meta name="author" content="Pythia"> 
-	<meta name="description" content="Online Event platform "> 
+	<meta name="description" content="Online X-Factor platform "> 
 	<meta property="og:image" content="http://www.petrominpng.com.pg/images/logo_big.png" />
 	<meta name="viewport" content="width=920, initial-scale=auto"> 
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Pythia" /> 
+	<meta property="og:title" content="YouCover.Me" /> 
 
-	<meta property="og:site_name" content="Pythia" />
+	<meta property="og:site_name" content="YouCover.Me" />
 	<title>
 		{% block title %}
-			Pythia.com 
+			youcover.me 
 		{% end %}
 	</title>
-
-<style type="text/css">
-body { background-repeat:repeat-x; background-image:url('/static/imgs/back.jpg');}
-div.txtSearchArea {background-repeat:no-repeat; background-image:url('/static/imgs/searchbar.jpg');width:500px;margin:0 auto;}
-div.btnStyle {margin-left:30%;height:59px;width:410px; }
-</style>
-
 </head> 
 
 <body >
@@ -37,7 +30,9 @@ div.btnStyle {margin-left:30%;height:59px;width:410px; }
 	{% raw xsrf_form_html() %}
 
 {% block scripts %}
-<script src="{{static_url('js/libs/jquery-1.7.2.min.js')}}"></script>
+	{% for css in kwargs['css_deps'] %}
+		<link rel="stylesheet" href="{{static_url(css)}}" type="text/css" />
+	{% end %}
 {% end %}
 
 	{% for js in kwargs['js_deps'] %}

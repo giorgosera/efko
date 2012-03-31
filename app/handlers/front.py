@@ -1,6 +1,7 @@
 from app.handlers import base
 from mongoengine.queryset import DoesNotExist
 
+
 class FrontPageHandler(base.BaseHandler):
     '''
     Check user status and either load the home screen or the
@@ -12,8 +13,10 @@ class FrontPageHandler(base.BaseHandler):
         #else:
         #    self.redirect("/home")
 	#self.base_render("welcome.html")
-	self.base_render("intro.html")
-
+    	self.base_render("intro.html")
+        #from mongoengine import connect
+        #connect("efko_db")
+    
 class KeywordHandler(base.BaseHandler):
     def on_post(self):
 	keywords = self.get_argument("txtSearch",None)
