@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+bleach/__init__.py
+bleach/encoding.py
+bleach/sanitizer.py
+pip-egg-info/bleach.egg-info/PKG-INFO
+pip-egg-info/bleach.egg-info/SOURCES.txt
+pip-egg-info/bleach.egg-info/dependency_links.txt
+pip-egg-info/bleach.egg-info/not-zip-safe
+pip-egg-info/bleach.egg-info/requires.txt
+pip-egg-info/bleach.egg-info/top_level.txt
