@@ -17,6 +17,14 @@
 			});
     });
 
+    $("#next-cover-btn").live("click", function() {
+	CYP.get("/next", 
+		 true,
+		 function(response) {
+		     console.log("new videos");
+		 });
+    });
+
     $("a.close").live("click", function() {
 	CYP.post("/populate", 
 		 {},
