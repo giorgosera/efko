@@ -20,17 +20,6 @@
 
     <div class="container">
 
-      <!-- Main hero unit for a primary marketing message or call to action -->
-	<div class="alert alert-warning">
-	  <a class="close" data-dismiss="alert">×</a>
-	  <h4 class="alert-heading">Don't Like What You See?</h4>
-	  <p>Well it's your own fault! You have the power to influence what you see on youcover.me by voting on covers.</p>
-	  <p>
-	  	  	<a class="btn btn-warning btn-mini" href="">Vote on more covers now &raquo; </a>
-	  </p>
-	</div>
-
-
       <!-- Example row of columns -->
       <div class="row-fluid">
         <div class="span6">
@@ -44,21 +33,13 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr>
-			      <td><span class="badge badge-success">54</span></td>
-			      <td>Blah Blah Blah - by Amazing Cover Artist</td>
-			      <td><a class="btn btn-primary btn-mini" href="#">Listen</a></td>
-			    </tr>
-			    <tr>
-			      <td><span class="badge badge-success">47</span></td>
-			      <td>Yada Yada Yada - by Blonde Hot Cover Artist</td>
-			      <td><a class="btn btn-primary btn-mini" href="#">Listen</a></td>
-			    </tr>
-			    <tr>
-			      <td><span class="badge badge-success">42</span></td>
-			      <td>Boom Boom Boom - by Dubsteper with Mad Beats Cover Artist</td>
-			      <td><a class="btn btn-primary btn-mini" href="#">Listen</a></td>
-			    </tr>			    			    
+			  	{% for song in kwargs['best'] %}
+				    <tr>
+				      <td><span class="badge badge-success">{{song.upvotes}}</span></td>
+				      <td>{{song.title}} by {{song.uploader}}</td>
+				      <td><a class="btn btn-primary btn-mini" href="{{song.url}}">Listen</a></td>
+				    </tr>
+   			  	{% end %}   
 			  </tbody>
 			</table>
         </div>
@@ -73,21 +54,13 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr>
-			      <td><span class="badge badge-error">9</span></td>
-			      <td>Ya Ya Ya - by Baby That Isn't Cute</td>
-			      <td><a class="btn btn-primary btn-mini" href="#">Listen</a></td>
-			    </tr>
-			    <tr>
-			      <td><span class="badge badge-error">5</span></td>
-			      <td>Tum Tum Tum - by Ugly Singing Girl</td>
-			      <td><a class="btn btn-primary btn-mini" href="#">Listen</a></td>
-			    </tr>
-			    <tr>
-			      <td><span class="badge badge-error">2</span></td>
-			      <td>KaThump KaThump KaThump - by Crappy Dubstep</td>
-			      <td><a class="btn btn-primary btn-mini" href="#">Listen</a></td>
-			    </tr>			    			    
+ 			  	{% for song in kwargs['worst'] %}
+				    <tr>
+				      <td><span class="badge badge-error">{{song.upvotes}}</span></td>
+				      <td>{{song.title}} by {{song.uploader}}</td>
+				      <td><a class="btn btn-primary btn-mini" href="{{song.url}}">Listen</a></td>
+				    </tr>
+				   {% end %}
 			  </tbody>
 			</table>
        </div>
