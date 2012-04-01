@@ -1,30 +1,153 @@
 {% extends "base.html" %}
 
-{% block header %}
-	<div id="splash-header">
-		<div id="logo">
-			<img src="/static/imgs/logo.png"/>
-		</div>
-	</div>
-{% end %}
-
-
-
 {% block content %}
-<center>
-	<div id="splash-content">
-		<div style="padding-bottom:20px">
-			
-		</div>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .faded {
+      	opacity: 0.4;
+      }      
+    </style>
 
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="docs/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="docs/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="docs/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="docs/assets/ico/apple-touch-icon-57-precomposed.png">
+    <script>
+		$(document).ready(function(){
+		   $("#closeButton").click(function(event){
+		     $("#landingBox").hide();
+		   });
+		 });			
+		 
+    </script>
+
+    <div class="container">
+
+	<div id="landingBox" class="modal">
+	  <h2 class="modal-header">Join Millions Discovering New Talent</h2>
+	  <div class="modal-body">
+	  	<h3>Artist Benefits</h3>
+	  	 <ul>
+			<li>Get discovered by global music labels</li>
+			<li>Drive more traffic to your YouTube videos</li>
+			<li>Increase your fan base</li>
+	  	 </ul>
+	  	<h3>Fan Benefits</h3>
+	  	 <ul>
+			<li>Vote on competing artists covering your favourite songs</li>
+			<li>Become a live global judge for <b>YouCover.Me</b> 2012</li>
+			<li>Influence the choices that record labels make</li>
+	  	 </ul>
+	  </div>
+	  <div class="modal-footer">
+		<div class="btn-group" style="width:500px; float:right">
+		  <a class="btn">Choose a Genre:</button>
+ 		  <a id="selected-genre" value="genreall" class="btn btn-primary" href="/" >All</a>
+		  <a id="selected-genre" value="genrerock" class="btn btn-primary" href="/">Rock</a>
+		  <a id="selected-genre" value="genrepop" class="btn btn-primary" href="/">Pop</a>
+		  <a id="selected-genre" value="genreexpression" class="btn btn-primary" href="/">Expression</a>
+		  <a id="selected-genre" value="genrerebeccablack" class="btn btn-primary" href="/">Rebecca Black</a>
+		</div>
+	  
+	  </div>
 	</div>
 
-<div style="display:none" id="msg"></div>
-	<label>Hack</label><br>
-	<input style="width: 400px" type="text" id="txtSearch" name="email" value=""></input><br>
 
-	<input style="width:100px" type="button" id="btnSearch" name="btnSearch" value="Search">
+      <!-- Example row of columns -->
+      <div class="row faded">
+        <div class="span2">
+        	<img src="static/imgs/thumbs/EdSheeran1.jpg" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/EdSheeran2.jpg" width="100%" />        	
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/EdSheeran3.jpg" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/EdSheeran4.jpg" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/EdSheeran5.jpg" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/EdSheeran6.jpg" width="100%" />
+        </div>
+      </div>
+      <div class="row"><p> &nbsp; </p></div>      
+      <div class="row faded">
+        <div class="span2">
+        	<img src="static/imgs/thumbs/Game-Film(1).jpg" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/Game-Film(2).jpg" width="100%" />        	
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/Game-Film(3).jpg" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/Game-Film(4).jpg" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/Game-Film(5).jpg" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/Game-Film(6).jpg" width="100%" />
+        </div>
+      </div>
+      <div class="row"><p>&nbsp;</p></div>      
+      <div class="row faded">
+        <div class="span2">
+        	<img src="static/imgs/thumbs/dontstopbelieving1.png" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/dontstopbelieving2.png" width="100%" />        	
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/dontstopbelieving3.png" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/dontstopbelieving4.png" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/Ateam1.png" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/Ateam2.png" width="100%" />
+        </div>
+      </div>
+      <div class="row"><p>&nbsp;</p></div>      
+      <div class="row faded">
+        <div class="span2">
+        	<img src="static/imgs/thumbs/loseyourself1.png" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/EdSheeran2.jpg" width="100%" />        	
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/loseyourself3.png" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/EdSheeran3.jpg" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/EdSheeran4.jpg" width="100%" />
+        </div>
+        <div class="span2">
+        	<img src="static/imgs/thumbs/Game-Film(3).jpg" width="100%" />
+        </div>
+      </div>
+      <hr>
 
-</center>
-{% end %}
- 
+      <footer>
+        <p>&copy; YouCover.Me 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+{% end%}
+

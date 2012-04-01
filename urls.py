@@ -7,6 +7,7 @@ from app.handlers import base, home, admin, rankings
 
 url_patterns = [
     ("/", home.HomePageHandler),
+    ("/welcome", home.WelcomePageHandler),
     ("/next", home.HomePageHandler),
     ("/vote", home.VoteHandler),
     ("/rankings", rankings.ViewRankingsHandler),

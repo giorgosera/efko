@@ -3,6 +3,10 @@ from mongoengine.queryset import DoesNotExist
 from app.model.video import *
 from random import shuffle
 
+class WelcomePageHandler(base.BaseHandler):
+    def on_get(self):
+        self.base_render("welcome.html")
+    
 class HomePageHandler(base.BaseHandler):
     '''
     Check user status and either load the home screen or the
@@ -41,6 +45,8 @@ class SubmitCoverHandler(base.BaseHandler):
         artist = self.get_argument("artist", None)
         genre = self.get_argument("genre", None)
         uploader = self.get_argument("uploader", None)
+        
+        
         
         vi = VideoItem()
         vi.url = url

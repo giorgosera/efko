@@ -24,16 +24,10 @@
 		     console.log("new videos");
 		 });
     });
-
-    $("a.close").live("click", function() {
-	CYP.post("/populate", 
-		 {},
-		 true,
-		 function(response) {
-			console.log("DB populated")
-			});
-    });
     
-
+    $("#selected-genre").live("click", function() {
+	genre = $(this).attr("value");
+	//TODO pick one genre
+    });
 
 
