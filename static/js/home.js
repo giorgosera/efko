@@ -7,20 +7,24 @@
 
     // =============================== Listeners =============================== //
     
-    
-    
-    $("#btnSearch2").live("click", function() {
-        var txt = $("#txtSearch").attr("value");
-        CYP.post("/timeline", {
-            keywords: txt
-        }, true, function(response) {
-            if (response.s) {
-	 	CYP.successNotifier.show(response.feed);
-
-            }
-        });
+    $("a.btn-success").live("click", function() {
+	sid = 5;	
+	CYP.post("/vote", 
+		 {sid : sid},
+		 true,
+		 function(response) {
+			console.log("Vote casted")
+			});
     });
-    
+
+    $("a.close").live("click", function() {
+	CYP.post("/populate", 
+		 {},
+		 true,
+		 function(response) {
+			console.log("DB populated")
+			});
+    });
     
 
 

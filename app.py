@@ -7,7 +7,7 @@
 import ConfigParser #@UnresolvedImport
 import environment #@UnusedImport
 import tornado.web, os, pymongo
-import app.deps
+import app.deps 
 from urls import url_patterns
 from dependencies import css_deps, js_deps
 from mongoengine import connect #@UnresolvedImport
@@ -82,5 +82,7 @@ if __name__ == "__main__":
     config = ConfigParser.RawConfigParser()
     config.read(config_file)
     port = int(options.port or config.get(env, "port") or 8888)
+    
     NotesLib(env, port, config_file).listen(port)
+    
     tornado.ioloop.IOLoop.instance().start()

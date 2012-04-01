@@ -13,94 +13,77 @@
     padding-bottom: 40px;
   }
 </style>
-
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">YouCover.Me</a>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#top">Top</a></li>
-          <li><a href="#contact">Submit Cover</a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
-</div>
-
-<div class="container">
-
-  <!-- Main hero unit for a primary marketing message or call to action -->
-<div class="alert alert-info">
-  <a class="close" data-dismiss="alert">×</a>
-  <h1 class="alert-heading" style="top:100px">Vote Now!</h4>
-  Here are two videos of <b>Ed Sheeran's</b> song <b>The A-Team</b>. Vote on your favourite video now to help discover the worlds next big pop star!
-</div>
-
-
-     <!-- Example row of columns -->
-   <div class="row">
-     <div class="span6">
-       <h2>Brad Kavangh</h2>
-<object width="100%" height="315">
-  <param name="movie"
-         value="https://www.youtube.com/v/Y4rFiG44zFU?version=3&autohide=1&showinfo=0"></param>
-  <param name="allowScriptAccess" value="always"></param>
-  <embed src="https://www.youtube.com/v/Y4rFiG44zFU?version=3&autohide=1&showinfo=0"
-         type="application/x-shockwave-flash"
-         allowscriptaccess="always"
-          width="100%" height="315"></embed>
-</object>
-        <p></p>
-       <p align="right"><a class="btn btn-success" href="#">&laquo; Vote for this Tune <i class="icon-ok-circle"></i></a></p>
-     </div>
-     <div class="span6">
-       <h2>Becky CJ</h2>
-<object width="100%" height="315">
-  <param name="movie"
-         value="https://www.youtube.com/v/ES62wpjX21Q?version=3&autohide=1&showinfo=0"></param>
-  <param name="allowScriptAccess" value="always"></param>
-  <embed src="https://www.youtube.com/v/ES62wpjX21Q?version=3&autohide=1&showinfo=0"
-         type="application/x-shockwave-flash"
-         allowscriptaccess="always"
-          width="100%" height="315"></embed>
-</object>
-        <p></p>
-       <p><a class="btn btn-success" href="#"><i class="icon-ok-circle"></i> Vote for this Tune &raquo;</a></p>
-    </div>
-   </div>
-
-   <hr>
-
-   <footer>
-     <p>&copy; YouCover.Me 2012</p>
-   </footer>
-
- </div> <!-- /container -->
-
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="efko-static/docs/assets/js/jquery.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-transition.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-alert.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-modal.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-dropdown.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-scrollspy.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-tab.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-tooltip.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-popover.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-button.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-collapse.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-carousel.js"></script>
-<script src="efko-static/docs/assets/js/bootstrap-typeahead.js"></script>
-
+{% if kwargs != None %}
+	<div class="navbar navbar-fixed-top">
+	  <div class="navbar-inner">
+	    <div class="container">
+	      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </a>
+	      <a class="brand" href="#">YouCover.Me</a>
+	      <div class="nav-collapse">
+	        <ul class="nav">
+	          <li class="active"><a href="#">Home</a></li>
+	          <li><a href="#top">Top Covers</a></li>
+	          <li><a href="#contact">Submit Cover</a></li>
+	        </ul>
+	      </div><!--/.nav-collapse -->
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="container">
+	
+	  <!-- Main hero unit for a primary marketing message or call to action -->
+	<div class="alert alert-info">
+	  <a class="close" data-dismiss="alert">×</a>
+	  <h1 class="alert-heading" style="top:100px">Vote Now!</h4>
+	  Vote on your favourite video now to help discover the worlds next big pop star!
+	</div>
+	
+	     <!-- Example row of columns -->
+	   <div class="row">
+	     <div class="span6">
+	       <h2>{{kwargs['first'].uploader}}</h2>
+	<object width="100%" height="315">
+	  <param name="movie"
+	         value="{{kwargs['first'].url}}"></param>
+	  <param name="allowScriptAccess" value="always"></param>
+	  <embed src="{{kwargs['first'].url}}"
+	         type="application/x-shockwave-flash"
+	         allowscriptaccess="always"
+	          width="100%" height="315"></embed>
+	</object>
+	        <p></p>
+	       <p align="right"><a sid="{{kwargs['first'].id}}" class="btn btn-success" href="#">&laquo; Vote for this<i class="icon-ok-circle"></i></a></p>
+	     </div>
+	     <div class="span6">
+	       <h2>{{kwargs['second'].uploader}}</h2>
+	<object width="100%" height="315">
+	  <param name="movie"
+	         value="{{kwargs['second'].url}}"></param>
+	  <param name="allowScriptAccess" value="always"></param>
+	  <embed src="{{kwargs['second'].url}}"
+	         type="application/x-shockwave-flash"
+	         allowscriptaccess="always"
+	          width="100%" height="315"></embed>
+	</object>
+	        <p></p>
+	       <p><a sid="{{kwargs['first'].id}}" class="btn btn-success" href="#"><i class="icon-ok-circle"></i> Vote for this &raquo;</a></p>
+	    </div>
+	   </div>
+	
+	   <hr>
+	
+	   <footer>
+	     <p>&copy; YouCover.Me 2012</p>
+	   </footer>
+	 </div> <!-- /container -->
+{% else %}
+	No songs to play! Move along
+{% end %}
 
 
 {% end%}

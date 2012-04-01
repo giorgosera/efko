@@ -204,13 +204,10 @@ class BaseHandler(tornado.web.RequestHandler):
                 result = ()
         except (OperationError, ValidationError), e:
             msg = e.message.encode("utf-8")
-            self.log.error(msg)
             self._execute_on_error(e)
         except AjaxMessageException as ame:
-            self.log.debug(ame.message)
             self._execute_on_error(ame)
         except tornado.web.HTTPError as httperr:
-            self.log.error(str(httperr))
             raise
         except:
             ex = sys.exc_info()[1]

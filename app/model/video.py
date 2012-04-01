@@ -8,10 +8,7 @@ anything related to the video items:
 @author: George Eracleous
 '''
 
-import datetime, string, hashlib, random, tornado.escape
-import pymongo
-from mongoengine import Document, IntField, StringField, BooleanField, EmbeddedDocumentField #@UnresolvedImports 
-from mongoengine import EmbeddedDocument, DateTimeField, ObjectIdField #@UnresolvedImports
+from mongoengine import Document, IntField, StringField, BooleanField#@UnresolvedImports 
 
 
 class VideoItem(Document):
@@ -24,4 +21,4 @@ class VideoItem(Document):
     uploader = StringField(required=True)
     upvotes = IntField(required=True, default=0)
     downvotes = IntField(required=True, default=0)
-    
+    viewed = BooleanField(required=True, default=False)
