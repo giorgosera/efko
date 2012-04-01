@@ -8,7 +8,7 @@
     // =============================== Listeners =============================== //
     
     $("a.btn-success").live("click", function() {
-	sid = 5;	
+	sid = $(this).attr("sid");
 	CYP.post("/vote", 
 		 {sid : sid},
 		 true,
