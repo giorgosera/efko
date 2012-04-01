@@ -9,7 +9,6 @@ class HomePageHandler(base.BaseHandler):
     welcome page.
     '''
     def on_get(self):
-        print 'Hello'
         songs = [item for item in VideoItem.objects if not item.viewed]
         shuffle(songs)
         first_selection = songs.pop(0)
@@ -31,6 +30,22 @@ class VoteHandler(base.BaseHandler):
         sid = self.get_argument("sid", None)
         vi = VideoItem.objects(id=sid).get()
         vi.upvote()
-        
-        
+
+class SubmitCoverHandler(base.BaseHandler):
+    def on_get(self):
+        self.base_render("submit.html")
     
+    def on_post(self):
+        url = self.get_argument("url", None)
+        title = self.get_argument("title", None)
+        artist = self.get_argument("artist", None)
+        genre = self.get_argument("genre", None)
+        uploader = self.get_argument("uploader", None)
+        
+        vi = VideoItem()
+        vi.url = url
+        vi.title = title
+        vi.artist = artist
+        vi.genre = genre
+        vi.uploader = uploader
+        vi.save()

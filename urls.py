@@ -10,6 +10,7 @@ url_patterns = [
     ("/next", home.HomePageHandler),
     ("/vote", home.VoteHandler),
     ("/rankings", rankings.ViewRankingsHandler),
+    ("/submit", home.SubmitCoverHandler),
     ##########ADMIN HANDLERS#################
     ("/populate", admin.PopulateDummyHandler),
 ]
