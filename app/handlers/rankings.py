@@ -9,8 +9,8 @@ class ViewRankingsHandler(base.BaseHandler):
     def on_get(self):
         songs = [item for item in VideoItem.objects if not item.viewed]
         songs = sorted(songs, key=lambda song: -song.upvotes)        
-        best = songs[:5]
-        worst = songs[-5:]
+        best = songs[:10]
+        worst = songs[-10:]
         return best, worst
     
     def on_success(self, b, w):

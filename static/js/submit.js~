@@ -30,7 +30,7 @@
 		$("#title").val("");
 		$("#artist").val("");
 		$("#uploader").val("");
-		CYP.errorNotifier.show("Some fields are missing!")	
+		CYP.successNotifier.show("Some fields are missing!")	
 	}
 
     });

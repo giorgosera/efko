@@ -73,7 +73,7 @@ class SubmitCoverHandler(base.BaseHandler):
             vi.artist = artist
             vi.genre = genre
             vi.uploader = uploader
-            #vi.save()
+            vi.save()
             msg = "The cover was submitted successfully."
 
         return (msg, )

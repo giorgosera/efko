@@ -9,7 +9,7 @@
     
     $("a.btn-success").live("click", function() {
 	sid = $(this).attr("sid");
-	if (! $(this).attr("disabled")) {
+	if (! $(this).hasAttr("disabled")) {
 		CYP.post("/vote", 
 			 {sid : sid},
 			 true,
