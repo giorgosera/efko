@@ -26,6 +26,8 @@
       <!-- Example row of columns -->
       <div class="row">
       	<div class="span12">
+      		<form class="well form-horizontal" name="submitcover" action="/submit" method="post">
+      		{% raw xsrf_form_html() %}
 			<fieldset>
 			    <legend>Submit a New Cover</legend>
 			    <div class="control-group">
@@ -73,8 +75,9 @@
 			        </label>
 			      </div>
 			    </div>
-			    <a id="submit-btn" class="btn btn-primary" style="float:right">Add this cover</a>					    				    	    
+			    <button type="submit" class="btn btn-primary" style="float:right">Add this cover</button>					    				    	    
 			  </fieldset>
+			</form>
       </div>
 
       <hr>
