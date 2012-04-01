@@ -3,10 +3,11 @@
 # Author: Giorgos Eracleous #
 #############################
 
-from app.handlers import base,front
+from app.handlers import base, home, admin
 
 url_patterns = [
-    ("/", front.FrontPageHandler),
-    ("/home", front.FrontPageHandler),
-    ("/timeline", front.KeywordHandler),
+    ("/", home.HomePageHandler),
+    ("/vote", home.VoteHandler),
+    ##########ADMIN HANDLERS#################
+    ("/populate", admin.PopulateDummyHandler),
 ]
