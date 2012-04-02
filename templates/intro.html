@@ -19,9 +19,7 @@
 	
 		  <!-- Main hero unit for a primary marketing message or call to action -->
 		<div class="alert alert-info">
-		  <a class="close" data-dismiss="alert">×</a>
 		  <h1 class="alert-heading" style="top:100px">"{{kwargs['first'].title}}" by {{kwargs['first'].artist}}</h4>
-		  Vote on your favourite cover now to help discover the worlds next big pop star!
 		</div>
 		
 		     <!-- Example row of columns -->
@@ -62,6 +60,17 @@
 	       	  <p><input type="submit" value="Go to the next cover &raquo;" id="next-cover-btn" class="btn btn-inverse btn-large" style="width: 240px;"></p>
 	       	  </form>	
 	       </div>
+			
+			<div id="share-btns">
+		        <a name="fb_share" type="button" share_url="youcover.me" style="position:relative; left:-2px;top:-6px;"></a> 
+				<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+				        type="text/javascript">
+				</script>
+	
+				<a href="https://twitter.com/share" class="twitter-share-button" data-count= "None" data-url="youcover.me" data-text="I just compared two covers on www.youcover.me" data-via="youcoverme">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+
 		   <hr>	
 		   <footer>
 		     <p>&copy; YouCover.Me 2012</p>
