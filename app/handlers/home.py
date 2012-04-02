@@ -43,8 +43,7 @@ class HomePageHandler(base.BaseHandler):
             titles_jaccard = float(len(titles_intersection))/float(len(titles_union))
             
             similarity = 0.9*titles_jaccard + 0.1*tags_jaccard
-            print similarity
-            
+
             if similarity > 0.4:
                 second_selection = song
                 break
@@ -73,7 +72,6 @@ class SubmitCoverHandler(base.BaseHandler):
         title = self.get_argument("title", None)
         artist = self.get_argument("artist", None)
         genre = self.get_argument("genre", None)
-        uploader = self.get_argument("uploader", None)
         response = True
         msg = ""        
         
@@ -102,7 +100,10 @@ class SubmitCoverHandler(base.BaseHandler):
             vi.url = 'http://www.youtube.com/v/' + videoCode + '?version=3&amp;hl=en_GB'
             if not len(VideoItem.objects(url = vi.url)) > 0:
                 vi.title = video_entry.media.title.text
+                vi.original_title = title
                 vi.uploader = video_entry.author[0].name.text
+                user_entry = yt_service.GetYouTubeUserEntry(username=vi.uploader)
+                vi.uploader_url = user_entry.link[0].href
                 tags = video_entry.media.keywords.text
                 vi.tags = tags.split(', ')
                 vi.artist = artist

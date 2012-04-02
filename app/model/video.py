@@ -16,9 +16,11 @@ class VideoItem(Document):
 
     url = StringField(required=True)
     title = StringField(required=True)
+    original_title = StringField(required=True)
     artist = StringField(required=False)
     genre = StringField(required=False)
     uploader = StringField(required=True)
+    uploader_url = StringField(required=True)
     upvotes = IntField(required=True, default=0)
     viewed = BooleanField(required=True, default=False)
     views = IntField(required=True, default=0)

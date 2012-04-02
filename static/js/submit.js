@@ -10,14 +10,12 @@
 	var url = $("#url").val();	
 	var title = $("#title").val();
 	var artist = $("#artist").val();
-	var uploader = $("#uploader").val();
 	var genre = $('input[name="genre"]').val();
-	if (url && artist && genre){
+	if (url && title && artist && genre){
 		CYP.post("/submit", 
 			 {url : url,
 			  title : title,
 			  artist : artist,
-			  uploader: uploader,
 			  genre: genre
 			 },
 			 true,
@@ -25,7 +23,6 @@
 				$("#url").val("");	
 				$("#title").val("");
 				$("#artist").val("");
-				$("#uploader").val("");
 				CYP.successNotifier.show(response.msg)
 		});
 	} 
@@ -33,7 +30,6 @@
 		$("#url").val("");	
 		$("#title").val("");
 		$("#artist").val("");
-		$("#uploader").val("");
 		CYP.successNotifier.show("Some fields are missing!");	
 	}
 

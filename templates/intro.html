@@ -19,13 +19,13 @@
 	
 		  <!-- Main hero unit for a primary marketing message or call to action -->
 		<div class="alert alert-info">
-		  <h1 class="alert-heading" style="top:100px">"{{kwargs['first'].title}}" by {{kwargs['first'].artist}}</h4>
+		  <h1 class="alert-heading" style="top:100px">"{{kwargs['first'].original_title}}" by {{kwargs['first'].artist}}</h4>
 		</div>
 		
 		     <!-- Example row of columns -->
 		   <div class="row">
 		     <div class="span6">
-		       <h2>{{kwargs['first'].uploader}} <span class="badge badge-inverse">{{kwargs['first'].upvotes}} votes</span></h2>
+		       <h2>{{kwargs['first'].uploader}} <a class="btn btn-danger" href="{{kwargs['first'].uploader_url}}">Visit channel</a> <span class="badge badge-inverse">{{kwargs['first'].upvotes}} votes</span></h2>
 		<object width="100%" height="315">
 		  <param name="movie"
 		         value="{{kwargs['first'].url}}"></param>
@@ -39,7 +39,7 @@
 		       <p align="right"><a sid="{{kwargs['first'].id}}" class="btn btn-success" href="#">&laquo; Vote for this<i class="icon-ok-circle"></i></a></p>
 		     </div>
 		     <div class="span6">
-		       <h2>{{kwargs['second'].uploader}} <span class="badge badge-inverse">{{kwargs['second'].upvotes}} votes</span></h2>
+		       <h2>{{kwargs['second'].uploader}} <a class="btn btn-danger" href="{{kwargs['second'].uploader_url}}">Visit channel</a> <span class="badge badge-inverse">{{kwargs['second'].upvotes}} votes</span></h2>
 		<object width="100%" height="315">
 		  <param name="movie"
 		         value="{{kwargs['second'].url}}"></param>
