@@ -3,7 +3,7 @@
 # Author: Giorgos Eracleous #
 #############################
 
-from app.handlers import base, home, admin, rankings
+from app.handlers import base, home, admin, rankings, landing
 
 url_patterns = [
     ("/", home.HomePageHandler),
@@ -12,6 +12,9 @@ url_patterns = [
     ("/vote", home.VoteHandler),
     ("/rankings", rankings.ViewRankingsHandler),
     ("/submit", home.SubmitCoverHandler),
+    ##########LANDING HANDLERS#################
+    ("/terms", landing.TermsHandler),
+    ("/privacy", landing.PrivacyHandler),   
     ##########ADMIN HANDLERS#################
     ("/populate", admin.PopulateDummyHandler),
 ]
