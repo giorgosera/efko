@@ -28,23 +28,24 @@ class HomePageHandler(base.BaseHandler):
         shuffle(songs)
         first_selection = songs.pop(0)
         tags_first = set(first_selection.tags)
-        title_first = set(first_selection.title) 
+        title_first = set(first_selection.title)
+        original_title_first = set(first_selection.original_title) 
         for song in songs:
             
             #Code to compute similarity
-            tags_song = set(song.tags)
-            tags_intersection = tags_song & tags_first
-            tags_union =  tags_song | tags_first
-            tags_jaccard = float(len(tags_intersection))/float(len(tags_union))
-
             title_song = set(song.title)
             titles_intersection = title_song & title_first
             titles_union =  title_song | title_first
             titles_jaccard = float(len(titles_intersection))/float(len(titles_union))
             
-            similarity = 0.9*titles_jaccard + 0.1*tags_jaccard
+            original_title_song = set(song.original_title)
+            original_titles_intersection = original_title_song & original_title_first
+            original_titles_union =  original_title_song | original_title_first
+            original_titles_jaccard = float(len(original_titles_intersection))/float(len(original_titles_union))
+            
+            similarity = 0.5*original_titles_jaccard + 0.5*titles_jaccard
 
-            if similarity > 0.4:
+            if similarity > 0.7:
                 second_selection = song
                 break
             
@@ -117,3 +118,5 @@ class SubmitCoverHandler(base.BaseHandler):
     def on_success(self, response):
         self.xhr_response.update({"msg": response})  
         self.write(self.xhr_response)
+
+        

@@ -34,3 +34,5 @@
 	}
 
     });
+
+$(this).autocomplete("submit/search");
