@@ -12,7 +12,7 @@
 	var artist = $("#artist").val();
 	var uploader = $("#uploader").val();
 	var genre = $('input[name="genre"]').val();
-	if (url && title && uploader && genre){
+	if (url && artist && genre){
 		CYP.post("/submit", 
 			 {url : url,
 			  title : title,
@@ -22,6 +22,10 @@
 			 },
 			 true,
 			 function(response) {
+				$("#url").val("");	
+				$("#title").val("");
+				$("#artist").val("");
+				$("#uploader").val("");
 				CYP.successNotifier.show(response.msg)
 		});
 	} 

@@ -3,6 +3,17 @@ from mongoengine.queryset import DoesNotExist
 from app.model.video import *
 from random import shuffle
 
+import gdata.youtube#@UnresolvedImport
+import gdata.youtube.service#@UnresolvedImport
+
+yt_service = gdata.youtube.service.YouTubeService()
+
+# Turn on HTTPS/SSL access.
+# Note: SSL is not available at this time for uploads.
+yt_service.ssl = True
+yt_service.developer_key = 'AI39si6XpFkJyW1UdXys9w9m6H_cpDomrAuo0UfM3kTH1WakeQBaTmyWuewZSeRkkPWR1iWj-xUDg2xBM0LefrmsIjk5Fbi-tw'
+
+
 class WelcomePageHandler(base.BaseHandler):
     def on_get(self):
         self.base_render("welcome.html")
@@ -16,10 +27,28 @@ class HomePageHandler(base.BaseHandler):
         songs = [item for item in VideoItem.objects if not item.viewed]
         shuffle(songs)
         first_selection = songs.pop(0)
+        tags_first = set(first_selection.tags)
+        title_first = set(first_selection.title) 
         for song in songs:
-            if first_selection.title == song.title:
+            
+            #Code to compute similarity
+            tags_song = set(song.tags)
+            tags_intersection = tags_song & tags_first
+            tags_union =  tags_song | tags_first
+            tags_jaccard = float(len(tags_intersection))/float(len(tags_union))
+
+            title_song = set(song.title)
+            titles_intersection = title_song & title_first
+            titles_union =  title_song | title_first
+            titles_jaccard = float(len(titles_intersection))/float(len(titles_union))
+            
+            similarity = 0.9*titles_jaccard + 0.1*tags_jaccard
+            print similarity
+            
+            if similarity > 0.4:
                 second_selection = song
                 break
+            
         first_selection.flagged_as_seen()
         second_selection.flagged_as_seen() 
           
@@ -47,6 +76,7 @@ class SubmitCoverHandler(base.BaseHandler):
         uploader = self.get_argument("uploader", None)
         response = True
         msg = ""        
+        
         try:
             length = len(url)
             start = -1
@@ -67,15 +97,20 @@ class SubmitCoverHandler(base.BaseHandler):
             print e
         
         if response:
+            video_entry = yt_service.GetYouTubeVideoEntry(video_id=videoCode)
             vi = VideoItem()
             vi.url = 'http://www.youtube.com/v/' + videoCode + '?version=3&amp;hl=en_GB'
-            vi.title = title
-            vi.artist = artist
-            vi.genre = genre
-            vi.uploader = uploader
-            vi.save()
-            msg = "The cover was submitted successfully."
-
+            if not len(VideoItem.objects(url = vi.url)) > 0:
+                vi.title = video_entry.media.title.text
+                vi.uploader = video_entry.author[0].name.text
+                tags = video_entry.media.keywords.text
+                vi.tags = tags.split(', ')
+                vi.artist = artist
+                vi.genre = genre            
+                vi.save()
+                msg = "The cover was submitted successfully."
+            else:
+                msg = "This cover already exists in the database."
         return (msg, )
         
     def on_success(self, response):

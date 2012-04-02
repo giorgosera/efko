@@ -8,7 +8,7 @@ anything related to the video items:
 @author: George Eracleous
 '''
 
-from mongoengine import Document, IntField, StringField, BooleanField#@UnresolvedImports 
+from mongoengine import Document, IntField, StringField, BooleanField, ListField#@UnresolvedImports 
 
 
 class VideoItem(Document):
@@ -22,6 +22,7 @@ class VideoItem(Document):
     upvotes = IntField(required=True, default=0)
     viewed = BooleanField(required=True, default=False)
     views = IntField(required=True, default=0)
+    tags = ListField(StringField(), default=list)
     
     def upvote(self):
         '''
