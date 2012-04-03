@@ -2,27 +2,17 @@ from app.handlers import base
 from mongoengine.queryset import DoesNotExist
 from app.model.video import *
 
-class PopulateDummyHandler(base.BaseHandler):
+class ListSongsHandler(base.BaseHandler):
     '''
-    Populates the database with dummy Youtube videos
+    Lists all Youtube videos
     '''
+    def on_get(self):
+        songs = [song for song in VideoItem.objects]
+        size = len(songs)
+        songs1 = songs[:size/2]
+        songs2 = songs[size/2:]
+        self.base_render("songlist.html", songs1=songs1, songs2=songs2)    
+        
     def on_post(self):
-        i = 0
-        while (i<2):
-            url = raw_input("Song's url")
-            title = raw_input("Song's title")
-            artist = raw_input("Who's the artist?")
-            uploader = raw_input("Who's the uploader?")
-            genre = raw_input("What's the genre?")
-            
-            vi = VideoItem()
-            vi.url = url
-            vi.title = title
-            vi.artist = artist
-            vi.uploader = uploader
-            vi.genre = genre
-            try:
-                vi.save(safe=True)
-            except Exception, e:
-                print e
-            i+=1
+        sid = self.get_argument("sid", None)
+        VideoItem.objects(id=sid).delete()

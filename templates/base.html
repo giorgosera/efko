@@ -59,7 +59,8 @@
 	   <footer style="position: relative; float:right">
 	     <p style="display:inline; padding:5px;" >&copy; YouCover.Me 2012</p>&middot;
 	     <a style="display:inline; padding:5px;" href="/terms">Terms</a>&middot;
-   	     <a style="display:inline; padding:5px;" href="/privacy">Privacy Policy</a>
+   	     <a style="display:inline; padding:5px;" href="/privacy">Privacy Policy</a>&middot;
+   	     <a style="display:inline; padding:5px;" href="/about">About Us</a>
 	   </footer>	
 	</div>
 	{% raw xsrf_form_html() %}
@@ -68,6 +69,21 @@
 	{% for css in kwargs['css_deps'] %}
 		<link rel="stylesheet" href="{{static_url(css)}}" type="text/css" />
 	{% end %}
+	
+	<script type="text/javascript">
+	
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-30505617-1']);
+	  _gaq.push(['_setDomainName', 'youcover.me']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
 {% end %}
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -78,6 +94,7 @@
 	{% for js in kwargs['js_deps'] %}
 		<script src="{{static_url(js)}}"></script>
 	{% end %}
+
 </body> 
 
 </html>

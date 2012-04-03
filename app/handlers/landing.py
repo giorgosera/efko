@@ -10,4 +10,8 @@ class PrivacyHandler(base.BaseHandler):
 
     def on_get(self):
         self.base_render("privacy.html")
-    
+
+class AboutHandler(base.BaseHandler):
+
+    def on_get(self):
+        self.base_render("about.html")    

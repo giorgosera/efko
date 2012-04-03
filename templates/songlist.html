@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .faded {
+      	opacity: 0.4;
+      }
+    </style>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="docs/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="docs/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="docs/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="docs/assets/ico/apple-touch-icon-57-precomposed.png">
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row-fluid">
+        <div class="span6">
+          <h2>All songs (Part 1)</h2>
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Votes</th>
+			      <th>Song</th>
+			      <th>Delete</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	{% for song in kwargs['songs1'] %}
+				    <tr>
+				      <td><span class="badge badge-success">{{song.upvotes}}</span></td>
+				      <td>{{song.title}} by {{song.uploader}}</td>
+				      <td><a class="btn btn-primary btn-mini" id="dlt-btn" sid="{{song.id}}">Delete</a></td>
+				    </tr>
+   			  	{% end %}   
+			  </tbody>
+			</table>
+        </div>
+        <div class="span6">
+          <h2>All Songs (Part 2)</h2>
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Votes</th>
+			      <th>Song</th>
+			      <th>Delete</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+ 			  	{% for song in kwargs['songs2'] %}
+				    <tr>
+				      <td><span class="badge badge-error">{{song.upvotes}}</span></td>
+				      <td>{{song.title}} by {{song.uploader}}</td>
+				      <td><a class="btn btn-primary btn-mini" id="dlt-btn" sid="{{song.id}}">Delete</a></td>
+				    </tr>
+				   {% end %}
+			  </tbody>
+			</table>
+       </div>
+      </div>
+    </div> <!-- /container -->
+{% end%}
+

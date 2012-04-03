@@ -14,7 +14,9 @@ url_patterns = [
     ("/submit", home.SubmitCoverHandler),
     ##########LANDING HANDLERS#################
     ("/terms", landing.TermsHandler),
-    ("/privacy", landing.PrivacyHandler),   
+    ("/privacy", landing.PrivacyHandler),
+    ("/about", landing.AboutHandler),   
     ##########ADMIN HANDLERS#################
-    ("/populate", admin.PopulateDummyHandler),
+    ("/thisisasecreturl18211281", admin.ListSongsHandler)
+    
 ]
