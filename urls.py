@@ -3,7 +3,7 @@
 # Author: Giorgos Eracleous #
 #############################
 
-from app.handlers import base, home, admin, rankings, landing
+from app.handlers import base, home, admin, rankings, landing, user
 
 url_patterns = [
     ("/", home.HomePageHandler),
@@ -17,6 +17,8 @@ url_patterns = [
     ("/privacy", landing.PrivacyHandler),
     ("/about", landing.AboutHandler),   
     ##########ADMIN HANDLERS#################
-    ("/thisisasecreturl18211281", admin.ListSongsHandler)
-    
+    ("/thisisasecreturl18211281", admin.ListSongsHandler),
+    ##########USER HANDLERS#################
+    ("/register/google", user.UserAuthenticationHandler),
+    ("/register/google/info", user.UserAuthenticationHandler)
 ]
