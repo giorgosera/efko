@@ -1,4 +1,5 @@
 [program:youcoverme]
-command = python /www/virtualenv/youcoverme/src/app.py --port=8000
-numprocs = 1
+process_name = youcoverme-%(process_num)s
+command = python app.py --port=%(process_num)s
+numprocs = 4
 numprocs_start = 8000
