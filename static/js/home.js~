@@ -9,7 +9,7 @@
     
     $("a.btn-success").live("click", function() {
 	sid = $(this).attr("sid");
-	if (! $(this).hasAttr("disabled")) {
+	if (! $(this).attr("disabled")) {
 		CYP.post("/vote", 
 			 {sid : sid},
 			 true,
@@ -28,9 +28,19 @@
 		 });
     });
     
-    $("#selected-genre").live("click", function() {
-	genre = $(this).attr("value");
-	//TODO pick one genre
+    $("#home-btn").live("click", function() {
+	console.log("sadasd")
+	$(this).addClass("active");
     });
+
+    $("#rankings-btn").live("click", function() {
+	$(this).addClass("active");
+    });
+
+    $("#submit-btn").live("click", function() {
+	$(this).addClass("active");
+    });
+
+    
 
 

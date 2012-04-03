@@ -27,10 +27,8 @@
 		     console.log("new videos");
 		 });
     });
+
+
     
-    $("#selected-genre").live("click", function() {
-	genre = $(this).attr("value");
-	//TODO pick one genre
-    });
 
 

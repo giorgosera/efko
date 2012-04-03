@@ -49,7 +49,8 @@ class UserRegistrationHandler(base.BaseHandler, tornado.auth.GoogleMixin):
         
     def _on_auth(self, user):
         if not user:
-            raise tornado.web.HTTPError(500, "Google auth failed")
+            self.redirect('/')
+
         self.base_render("register.html", first=user['first_name'], last=user['last_name'], email=user['email'], msg="")
         
     def on_post(self):
