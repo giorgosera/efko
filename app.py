@@ -82,7 +82,7 @@ if __name__ == "__main__":
     config = ConfigParser.RawConfigParser()
     config.read(config_file)
     print "pre"
-    port = int(options.port or config.get(env, "port") or 8888)
+    port = int(options.port or config.get(env, "port") or 8000)
     print port
     Youcoverme(env, port, config_file).listen(port)
     
