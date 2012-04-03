@@ -44,9 +44,9 @@ class HomePageHandler(base.BaseHandler):
             original_titles_union =  original_title_song | original_title_first
             original_titles_jaccard = float(len(original_titles_intersection))/float(len(original_titles_union))
             
-            similarity = 0.5*original_titles_jaccard + 0.5*titles_jaccard
+            similarity = 0.7*original_titles_jaccard + 0.3*titles_jaccard
 
-            if similarity > 1.7:
+            if similarity > 0.7:
                 second_selection = song
                 break
         
