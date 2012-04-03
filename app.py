@@ -59,14 +59,14 @@ class NotesLib(tornado.web.Application):
         
         deps = app.deps.ScriptDeps().registerDep(css_deps).registerDep(js_deps)
 
-	########################################################
+        ########################################################
         ## Initialize references to application-wide modules. ##
         ########################################################
             
         self.db   = db
         self.deps = deps
         self.env  = env
-	
+        
         tornado.web.Application.__init__(self, url_patterns, **settings)
 
 
