@@ -1,5 +1,5 @@
 [program:youcoverme]
 process_name = youcoverme-%(process_num)s
 command = python app.py --port=%(process_num)s
-numprocs = 4
+numprocs = 1
 numprocs_start = 8000
