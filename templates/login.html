@@ -35,23 +35,20 @@
         <div class="content">
             <div class="hero-unit">
 			  <h1>Become the next superstar!</h1>
-			  <p>Register and submit your own covers from Youtube.</p>
+			  <p> Login and submit your own covers from Youtube.</p>
 			  <p>
                 <div class="login-form">
-                    <h2>Register</h2>
-                    <form id="user-form" action="/register/google/info" method="post">
+                    <h2>Login</h2>
+                    <form id="login-form" action="/login/info" method="post">
                         {% raw xsrf_form_html() %}
                             <div class="clearfix">
                                 <input id="username" name="username" type="text" placeholder="Username">
                             </div>
+
                             <div class="clearfix">
-                                <input id="password" name="password" type="password" placeholder="Password">
+                                <input id="password" name="password" type="password" placeholder="Password"><p style="display:inline;"> {{kwargs['msg']}}</p>
                             </div>
-                            <div class="clearfix">
-                                <input id="password-verify" type="password" placeholder="Verify Password">
-                            </div>
-                            <input id="uid" type="hidden" name="uid" value="{{kwargs['uid']}}" />
-                            <button href="javascript: submitform()" id="submit-btn" class="btn btn-primary" type="submit">Register</button>
+                            <button id="submit-btn" class="btn btn-primary" type="submit">Register</button>
                     </form>
                 </div>
 			  </p>

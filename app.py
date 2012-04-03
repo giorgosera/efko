@@ -21,6 +21,7 @@ class Youcoverme(tornado.web.Application):
                     'static_path'   : "static",
                     'template_path' : "templates",
                     'cookie_secret' : "aKlRsPkySWyOqByxAQfLsKMbEAKj3ErRtg1RgkBUQ6E=noteslib",
+                    'login_url'     : "/register", #landing page if user is not authenticated
                     'xsrf_cookies'  : True,
                     'autoescape'    : "xhtml_escape"
                     }

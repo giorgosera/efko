@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <style type="text/css">
+      /* Override some defaults */
+      html, body {
+      }
+      body {
+        padding-top: 40px;
+      }
+ 
+      /* The white background content wrapper */
+      .container > .content {
+        background-color: #fff;
+        padding: 20px;
+        margin: 0 -20px;
+        -webkit-border-radius: 10px 10px 10px 10px;
+           -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      }
+ 
+ 
+      legend {
+        margin-right: -50px;
+        font-weight: bold;
+        color: #404040;
+      }
+    </style>
+
+    <div class="container">
+        <div class="content">
+            <div class="hero-unit">
+			  <h1>Become the next superstar!</h1>
+			  <p>Register and submit your own covers from Youtube.</p>
+			  <p>
+			  <a href="/register/google" class="btn btn-primary btn-large" >Register</a> or
+  			  <a href="/login" class="btn btn-primary btn-large">Login</a>
+			  </p>
+			</div>
+        </div>
+    </div> <!-- /container -->
+
+{% end%}
+

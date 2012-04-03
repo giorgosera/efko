@@ -4,7 +4,27 @@ from app.handlers import base
 from app.model.video import *
 from app.model.user import *
 
-class UserAuthenticationHandler(base.BaseHandler, tornado.auth.GoogleMixin):
+class UserAuthenticationHandler(base.BaseHandler):
+    def on_get(self):
+        self.base_render("non-authenticated.html")
+    
+class UserLoginHandler(base.BaseHandler):
+    def on_get(self):
+        self.base_render("login.html", msg="")
+        
+    def on_post(self):
+        username = self.get_argument("username", None)
+        password = self.get_argument("password", None)
+
+        user = User.objects(username=username).get()
+        success = user.correct_password(password)
+
+        if success:
+            self.base_render("submit.html")
+
+        self.base_render("login.html", msg="Incorrect password.")        
+    
+class UserRegistrationHandler(base.BaseHandler, tornado.auth.GoogleMixin):
     '''
     Authenticates user using OpenID
     '''
@@ -31,10 +51,9 @@ class UserAuthenticationHandler(base.BaseHandler, tornado.auth.GoogleMixin):
         uid = self.get_argument("uid", None)
         username = self.get_argument("username", None)
         password = self.get_argument("password", None)
-        print username
         u = User.objects(id=uid).get()
         u.create_password(password)
         u.username = username
         u.save()
-
         self.base_render("submit.html")
+        

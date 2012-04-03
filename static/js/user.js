@@ -25,8 +25,14 @@
 		}
 	});    
 
-    function submitform()
-   {
-
-   }
-
+	$('#login-form').submit(function() {
+	   	var username = $("#username").val();	
+		var password = $("#password").val();
+		if (username && password){
+			return true;
+		} 
+		else{			
+			CYP.successNotifier.show("Some fields are missing.");
+ 		       return false;	
+		}
+	});    

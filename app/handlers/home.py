@@ -1,8 +1,7 @@
 from app.handlers import base
-from mongoengine.queryset import DoesNotExist
 from app.model.video import *
 from random import shuffle
-
+import tornado.web
 import gdata.youtube#@UnresolvedImport
 import gdata.youtube.service#@UnresolvedImport
 
@@ -69,9 +68,12 @@ class VoteHandler(base.BaseHandler):
         vi.upvote()
 
 class SubmitCoverHandler(base.BaseHandler):
+    
+    @tornado.web.authenticated
     def on_get(self):
         self.base_render("submit.html")
-    
+
+    @tornado.web.authenticated
     def on_post(self):
         url = self.get_argument("url", None)
         title = self.get_argument("title", None)
