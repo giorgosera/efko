@@ -27,6 +27,7 @@ class HomePageHandler(base.BaseHandler):
         songs = [item for item in VideoItem.objects if not item.viewed]
         shuffle(songs)
         first_selection = songs.pop(0)
+        second_selection = None
         tags_first = set(first_selection.tags)
         title_first = set(first_selection.title)
         original_title_first = set(first_selection.original_title) 
@@ -45,9 +46,12 @@ class HomePageHandler(base.BaseHandler):
             
             similarity = 0.5*original_titles_jaccard + 0.5*titles_jaccard
 
-            if similarity > 0.7:
+            if similarity > 1.7:
                 second_selection = song
                 break
+        
+        if second_selection == None:
+            second_selection = song
             
         first_selection.flagged_as_seen()
         second_selection.flagged_as_seen() 
