@@ -1,5 +1,5 @@
 [program:youcoverme]
 process_name = youcoverme-%(process_num)s
-command = python boot.py -p %(process_num)s 
+command = python app.py -p %(process_num)s 
 numprocs = 4
 numprocs_start = 8888
