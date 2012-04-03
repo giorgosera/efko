@@ -13,9 +13,9 @@ from dependencies import css_deps, js_deps
 from mongoengine import connect #@UnresolvedImport
 from optparse import OptionParser #@UnresolvedImport
 
-class NotesLib(tornado.web.Application):
+class Youcoverme(tornado.web.Application):
     def __init__(self, env, port, config_file):
-	self.APP_NAME = "noteslib-" + str(port)
+	self.APP_NAME = "youcoverme-" + str(port)
 	
 	settings = {
                     'static_path'   : "static",
@@ -83,6 +83,6 @@ if __name__ == "__main__":
     config.read(config_file)
     port = int(options.port or config.get(env, "port") or 8888)
     
-    NotesLib(env, port, config_file).listen(port)
+    Youcoverme(env, port, config_file).listen(port)
     
     tornado.ioloop.IOLoop.instance().start()
