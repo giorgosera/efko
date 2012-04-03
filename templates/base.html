@@ -44,6 +44,9 @@
 	          <li class="active"><a href="/">Home</a></li>
 	          <li><a href="/rankings">Top Covers</a></li>
 	          <li><a href="/submit">Submit Cover</a></li>
+		      {%if current_user%}
+           	  <li><a href="/logout">Log out</a></li>
+		      {%end%}
          	  <li><a href="https://twitter.com/youcoverme" class="twitter-follow-button" data-show-count="false">Follow @youcoverme</a>
               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li>
 	        </ul>

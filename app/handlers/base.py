@@ -8,6 +8,7 @@ import tornado.web, sys, datetime
 
 from mongoengine import ValidationError #@UnresolvedImport
 from mongoengine.queryset import OperationError, DoesNotExist #@UnresolvedImport
+from app.model.user import *
 
 class BaseHandler(tornado.web.RequestHandler):
     '''
@@ -62,14 +63,6 @@ class BaseHandler(tornado.web.RequestHandler):
         ''' Localisation shortcut '''   
         return self.locale.translate(text).encode("utf-8")
 
-    def get_user_locale(self):
-        '''
-        Overrides the self.locale.get_user_locale() and gets called automatically.
-        Choose the user locale based on the stored attribute.  
-        '''
-        user_locale = self.current_user and self.current_user.locale or "el_GR"
-        return tornado.locale.get(user_locale)
-
     @property 
     def db(self):
         return self.application.db
@@ -89,10 +82,6 @@ class BaseHandler(tornado.web.RequestHandler):
     @property
     def widgets(self):
         return self.application.widget_pool
-    
-    @property
-    def services(self):
-        return self.application.service_pool
     
     def get(self, *args, **kwargs):
         self._execute_request(self.on_get, *args, **kwargs)
@@ -131,8 +120,6 @@ class BaseHandler(tornado.web.RequestHandler):
                 cu = CachedUser()
                 cu.id = user.id
                 cu.name = user.first_name + " " + user.last_name
-                cu.url = user.url
-                cu.short_desc = user.short_desc
                 self.cached_user = cu
                 return user
             except DoesNotExist:
@@ -167,9 +154,6 @@ class BaseHandler(tornado.web.RequestHandler):
         kwargs['jqte'] = "}}"
         kwargs['env'] = self.env
         kwargs['self'] = self
-        
-        if self.current_user:
-            kwargs['n_count'] = self.services["notification"].get_unread_count(owner=self.current_user.id)
             
         self.render(template, kwargs=kwargs)
     

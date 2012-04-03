@@ -21,6 +21,7 @@ url_patterns = [
     ##########USER HANDLERS#################
     ("/register", user.UserAuthenticationHandler),
     ("/login", user.UserLoginHandler),
+    ("/logout", user.UserLogoutHandler),
     ("/login/info", user.UserLoginHandler),
     ("/register/google", user.UserRegistrationHandler),
     ("/register/google/info", user.UserRegistrationHandler)

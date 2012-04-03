@@ -42,11 +42,11 @@
                     <form id="login-form" action="/login/info" method="post">
                         {% raw xsrf_form_html() %}
                             <div class="clearfix">
-                                <input id="username" name="username" type="text" placeholder="Username">
+                                <input id="username" name="username" type="text" placeholder="Username"><p style="display:inline;"> {{kwargs['msg_username']}}</p>
                             </div>
 
                             <div class="clearfix">
-                                <input id="password" name="password" type="password" placeholder="Password"><p style="display:inline;"> {{kwargs['msg']}}</p>
+                                <input id="password" name="password" type="password" placeholder="Password"><p style="display:inline;"> {{kwargs['msg_password']}}</p>
                             </div>
                             <button id="submit-btn" class="btn btn-primary" type="submit">Register</button>
                     </form>

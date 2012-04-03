@@ -10,19 +10,30 @@ class UserAuthenticationHandler(base.BaseHandler):
     
 class UserLoginHandler(base.BaseHandler):
     def on_get(self):
-        self.base_render("login.html", msg="")
+        self.base_render("login.html", msg_username="", msg_password="")
         
     def on_post(self):
         username = self.get_argument("username", None)
         password = self.get_argument("password", None)
+        msg_username = ""
+        msg_password = ""
+        
+        user = User.objects(username=username)
 
-        user = User.objects(username=username).get()
-        success = user.correct_password(password)
-
+        if len(user) > 0:
+            user = user.get()
+            success = user.correct_password(password)
+        else:
+            msg_username = "Username doesn't exist"
+            success = False
+             
         if success:
+            self.clear_cookie("email")
+            self.set_secure_cookie("email", user.email)
             self.base_render("submit.html")
-
-        self.base_render("login.html", msg="Incorrect password.")        
+        else:
+            msg_password = "Incorrect password"
+            self.base_render("login.html", msg_username=msg_username, msg_password=msg_password)        
     
 class UserRegistrationHandler(base.BaseHandler, tornado.auth.GoogleMixin):
     '''
@@ -56,4 +67,15 @@ class UserRegistrationHandler(base.BaseHandler, tornado.auth.GoogleMixin):
         u.username = username
         u.save()
         self.base_render("submit.html")
+
+class UserLogoutHandler(base.BaseHandler):
+    '''
+    Logout user.
+    '''
+    @tornado.web.authenticated
+    def on_get(self):
+        self.clear_cookie("email")
+    
+    def on_success(self):
+        self.redirect('/')
         

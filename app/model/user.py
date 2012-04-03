@@ -5,7 +5,7 @@ Module app.model.user
 @author: George Eracleous
 '''
 import string, hashlib, random
-from mongoengine import Document,StringField#@UnresolvedImports 
+from mongoengine import Document,StringField, EmbeddedDocument, ObjectIdField#@UnresolvedImports 
 
 class User(Document):
     meta = {"collection": "Users"}
@@ -28,3 +28,7 @@ class User(Document):
         salt = self.salt
         return hashlib.sha1(salt.encode('utf-8') + given_pass.encode('utf-8')).hexdigest() == self.password
         
+
+class CachedUser(EmbeddedDocument):
+    name = StringField(required=True)
+    id = ObjectIdField(required=True)
