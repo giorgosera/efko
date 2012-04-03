@@ -2,10 +2,6 @@
 
 {% block content %} 
     <style type="text/css">
-      /* Override some defaults */
-      html, body {
-        background-color: #eee;
-      }
       body {
         padding-top: 40px;
       }
@@ -42,7 +38,7 @@
                     <form id="user-form" action="/register/google/info" method="post">
                         {% raw xsrf_form_html() %}
                             <div class="clearfix">
-                                <input id="username" name="username" type="text" placeholder="Username">
+                                <input id="username" name="username" type="text" placeholder="Username">{%if kwargs['msg']%}<p style="display:inline;">  {{kwargs['msg']}} </p>{%end%}
                             </div>
                             <div class="clearfix">
                                 <input id="password" name="password" type="password" placeholder="Password">
@@ -50,7 +46,9 @@
                             <div class="clearfix">
                                 <input id="password-verify" type="password" placeholder="Verify Password">
                             </div>
-                            <input id="uid" type="hidden" name="uid" value="{{kwargs['uid']}}" />
+                            <input id="first" type="hidden" name="first" value="{{kwargs['first']}}" />
+                            <input id="last" type="hidden" name="last" value="{{kwargs['last']}}" />
+                            <input id="email" type="hidden" name="email" value="{{kwargs['email']}}" />
                             <button href="javascript: submitform()" id="submit-btn" class="btn btn-primary" type="submit">Register</button>
                     </form>
                 </div>

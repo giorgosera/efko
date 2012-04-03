@@ -50,23 +50,32 @@ class UserRegistrationHandler(base.BaseHandler, tornado.auth.GoogleMixin):
     def _on_auth(self, user):
         if not user:
             raise tornado.web.HTTPError(500, "Google auth failed")
-        u = User()
-        u.first_name = user['first_name']
-        u.last_name = user['last_name']
-        u.email = user['email'].lower()
-        u.password = ""
-        u.save(safe=True)
-        self.base_render("register.html", uid=u.id)
+        self.base_render("register.html", first=user['first_name'], last=user['last_name'], email=user['email'], msg="")
         
     def on_post(self):
-        uid = self.get_argument("uid", None)
+        first_name = self.get_argument("first", None)
+        last_name = self.get_argument("last", None)
+        email = self.get_argument("email", None)
         username = self.get_argument("username", None)
         password = self.get_argument("password", None)
-        u = User.objects(id=uid).get()
+        u = User()
+        u.first_name = first_name
+        u.last_name = last_name
+        u.email = email
         u.create_password(password)
-        u.username = username
-        u.save()
-        self.base_render("submit.html")
+        ok = u.check_username(username)
+        ok2 = u.check_email(u.email)
+        if ok and ok2:
+            u.username = username
+            u.save()
+            self.clear_cookie("email")
+            self.set_secure_cookie("email", u.email)
+            self.base_render("submit.html")
+        else:
+            msg = "Username or email already registered"
+            self.base_render("register.html", first=first_name, last=last_name, email=email, msg=msg)
+            
+        
 
 class UserLogoutHandler(base.BaseHandler):
     '''

@@ -27,8 +27,21 @@ class User(Document):
     def correct_password(self, given_pass):
         salt = self.salt
         return hashlib.sha1(salt.encode('utf-8') + given_pass.encode('utf-8')).hexdigest() == self.password
-        
+    
+    def check_username(self, given_username):
+        users = User.objects(username=given_username)
+        if len(users) > 0:
+            return False#username exists
+        else:
+            return True
 
+    def check_email(self, given_email):
+        users = User.objects(email=given_email)
+        if len(users) > 0:
+            return False#username exists
+        else:
+            return True
+        
 class CachedUser(EmbeddedDocument):
     name = StringField(required=True)
     id = ObjectIdField(required=True)

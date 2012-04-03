@@ -8,7 +8,9 @@
 
 	$('#user-form').submit(function() {
 	   	var username = $("#username").val();	
-	   	var uid = $("#uid").val();
+	   	var first = $("#first").val();
+	   	var last = $("#last").val();
+	   	var email = $("#email").val();
 		var password = $("#password").val();
 		var passwordVerify = $("#password-verify").val();
 		if (username && password && passwordVerify){
