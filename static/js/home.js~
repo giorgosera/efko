@@ -16,6 +16,8 @@
 			 function(response) {
 				console.log("Vote casted")
 				$("a.btn-success").attr("disabled", "disabled");
+				$("#votes-first").attr("style", "display:inline");
+				$("#votes-second").attr("style", "display:inline");
 			 });
 	}
     });
@@ -27,19 +29,7 @@
 		     console.log("new videos");
 		 });
     });
-    
-    $("#home-btn").live("click", function() {
-	console.log("sadasd")
-	$(this).addClass("active");
-    });
 
-    $("#rankings-btn").live("click", function() {
-	$(this).addClass("active");
-    });
-
-    $("#submit-btn").live("click", function() {
-	$(this).addClass("active");
-    });
 
     
 
