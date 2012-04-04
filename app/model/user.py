@@ -5,7 +5,7 @@ Module app.model.user
 @author: George Eracleous
 '''
 import string, hashlib, random
-from mongoengine import Document,StringField, EmbeddedDocument, ObjectIdField#@UnresolvedImports 
+from mongoengine import Document,StringField, EmbeddedDocument, ObjectIdField,  ListField#@UnresolvedImports 
 
 class User(Document):
     meta = {"collection": "Users"}
@@ -16,6 +16,7 @@ class User(Document):
     email = StringField(required=True)
     password = StringField(required=True, default="")
     salt = StringField(required=True, default="")
+    covers = ListField(StringField(), default=list)
     
     def create_password(self, password):
         char_set = string.ascii_uppercase + string.digits 

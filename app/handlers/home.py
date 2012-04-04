@@ -1,5 +1,6 @@
 from app.handlers import base
 from app.model.video import *
+from app.model.user import *
 from random import shuffle
 import tornado.web
 import gdata.youtube#@UnresolvedImport
