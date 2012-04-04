@@ -11,11 +11,6 @@ yt_service = gdata.youtube.service.YouTubeService()
 # Note: SSL is not available at this time for uploads.
 yt_service.ssl = True
 yt_service.developer_key = 'AI39si6XpFkJyW1UdXys9w9m6H_cpDomrAuo0UfM3kTH1WakeQBaTmyWuewZSeRkkPWR1iWj-xUDg2xBM0LefrmsIjk5Fbi-tw'
-
-
-class WelcomePageHandler(base.BaseHandler):
-    def on_get(self):
-        self.base_render("welcome.html")
     
 class HomePageHandler(base.BaseHandler):
     '''
@@ -117,12 +112,54 @@ class SubmitCoverHandler(base.BaseHandler):
                 vi.genre = genre            
                 vi.save()
                 msg = "The cover was submitted successfully."
+                share_url = "youcover.me/voteforthis?cover="+str(vi.id)
             else:
                 msg = "This cover already exists in the database."
-        return (msg, )
+        return (msg, share_url)
         
-    def on_success(self, response):
-        self.xhr_response.update({"msg": response})  
+    def on_success(self, response, share_url):
+        self.xhr_response.update({"msg": response, "share_url": share_url})  
         self.write(self.xhr_response)
 
+class UserPromotionHandler(base.BaseHandler):
+    '''
+    Renders homepage with specific song
+    '''
+    def on_get(self, *args, **kwargs):
+        sid = self.get_argument("cover")
+        songs =  [item for item in VideoItem.objects if str(item.id) != sid]
+        shuffle(songs)
+        vi = VideoItem.objects(id=sid).get()
+        first_selection = vi
+        second_selection = None
+        tags_first = set(first_selection.tags)
+        title_first = set(first_selection.title)
+        original_title_first = set(first_selection.original_title) 
+        for song in songs:      
+            #Code to compute similarity
+            title_song = set(song.title)
+            titles_intersection = title_song & title_first
+            titles_union =  title_song | title_first
+            titles_jaccard = float(len(titles_intersection))/float(len(titles_union))
+            
+            original_title_song = set(song.original_title)
+            original_titles_intersection = original_title_song & original_title_first
+            original_titles_union =  original_title_song | original_title_first
+            original_titles_jaccard = float(len(original_titles_intersection))/float(len(original_titles_union))
+            
+            similarity = 0.7*original_titles_jaccard + 0.3*titles_jaccard
+
+            if similarity > 0.7:
+                second_selection = song
+                break
         
+        if second_selection == None:
+            second_selection = song
+            
+        first_selection.flagged_as_seen()
+        second_selection.flagged_as_seen() 
+          
+        return first_selection, second_selection
+
+    def on_success(self, f, s):
+        self.base_render("intro.html", first=f, second=s)   

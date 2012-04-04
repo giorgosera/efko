@@ -20,10 +20,15 @@
 			 },
 			 true,
 			 function(response) {
+				$("#share-url-box").attr("style", "position:relative; width:500px; top:100px; float:right; display:block;")
+				$("#share-url-box").html("<h2>Success! Share this link with your friends and fans and let them vote on your cover!</h2></br><p style='border-style:solid; padding:2px;'>"+response.share_url +"</p></br><p><b>Note</: The covers in the homepage appear in random order. However, this link will redirect your fans directly to your cover, which will appear on the left hand frame!</p>");
+
+				//CYP.popup.show("Share this url with your friends: " + response.share_url)
+
 				$("#url").val("");	
 				$("#title").val("");
 				$("#artist").val("");
-				CYP.successNotifier.show(response.msg)
+				//CYP.successNotifier.show(response.msg)
 		});
 	} 
 	else{
@@ -35,4 +40,4 @@
 
     });
 
-$(this).autocomplete("/submit/search");
+$(this).autocomplete("submit/search");

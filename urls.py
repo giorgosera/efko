@@ -7,7 +7,6 @@ from app.handlers import base, home, admin, rankings, landing, user
 
 url_patterns = [
     ("/", home.HomePageHandler),
-    ("/welcome", home.WelcomePageHandler),
     ("/next", home.HomePageHandler),
     ("/vote", home.VoteHandler),
     ("/rankings", rankings.ViewRankingsHandler),
@@ -16,6 +15,8 @@ url_patterns = [
     ("/terms", landing.TermsHandler),
     ("/privacy", landing.PrivacyHandler),
     ("/about", landing.AboutHandler),   
+    ##########ARTISTS HANDLERS#################
+    ("/voteforthis", home.UserPromotionHandler),
     ##########ADMIN HANDLERS#################
     ("/thisisasecreturl18211281", admin.ListSongsHandler),
     ##########USER HANDLERS#################

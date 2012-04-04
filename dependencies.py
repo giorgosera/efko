@@ -11,7 +11,7 @@ css_deps = ("css", "css",
 
 # JS Dependencies.
 js_deps = ("js", "js",
-            [
+            [ 
              ("/register/google/*", ["user.js"]),
              ("/thisisasecreturl18211281", ["admin.js"]),
 	         ("/rankings", ["/libs/twitter/*"]),
