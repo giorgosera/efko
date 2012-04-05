@@ -18,7 +18,7 @@ url_patterns = [
     ##########ARTISTS HANDLERS#################
     ("/voteforthis", home.UserPromotionHandler),
     ##########ADMIN HANDLERS#################
-    ("/thisisasecreturl18211281", admin.ListSongsHandler),
+    ("/12345thisisasecreturl18211281", admin.ListSongsHandler),
     ##########USER HANDLERS#################
     ("/register", user.UserAuthenticationHandler),
     ("/login", user.UserLoginHandler),
