@@ -48,7 +48,11 @@
 		</object>
 		        <p></p>
 		        {%if current_user%}
-			       <p align="center"><a sid="{{kwargs['first'].id}}" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+		           {% if str(kwargs['first'].id) not in kwargs['current_user_votes']%}
+				       <p align="center"><a sid="{{kwargs['first'].id}}" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+			       {% else%}
+    				   <p align="center"><a sid="{{kwargs['first'].id}}" class="btn btn-success" disabled="disabled" style=" width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+    			   {%end%}
 			    {%else%}
 			    <p align="center"><a sid="{{kwargs['first'].id}}" href="/submit" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
 			    {%end%}
@@ -69,7 +73,11 @@
 		</object>
 		        <p></p>
 		        {%if current_user%}
-			       <p align="center"><a sid="{{kwargs['second'].id}}" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+		           {% if str(kwargs['second'].id) not in kwargs['current_user_votes']%}
+				       <p align="center"><a sid="{{kwargs['second'].id}}" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+			       {% else%}
+    				   <p align="center"><a sid="{{kwargs['second'].id}}" class="btn btn-success" disabled="disabled" style=" width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+    			   {%end%}
 			    {%else%}
 			    <p align="center"><a sid="{{kwargs['second'].id}}" href="/submit" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
 			    {%end%}

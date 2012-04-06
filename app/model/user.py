@@ -17,7 +17,8 @@ class User(Document):
     password = StringField(required=True, default="")
     salt = StringField(required=True, default="")
     covers = ListField(StringField(), default=list)
-    
+    voted_for = ListField(StringField(), default=list)
+        
     def create_password(self, password):
         char_set = string.ascii_uppercase + string.digits 
         salt = ''.join(random.sample(char_set, 4))
@@ -42,6 +43,12 @@ class User(Document):
             return False#username exists
         else:
             return True
+    
+    def record_vote(self, sid):
+        
+        if sid not in self.voted_for:
+            self.voted_for.append(sid)
+            self.save()
         
 class CachedUser(EmbeddedDocument):
     name = StringField(required=True)

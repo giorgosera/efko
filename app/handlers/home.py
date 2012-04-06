@@ -55,7 +55,7 @@ class HomePageHandler(base.BaseHandler):
         return first_selection, second_selection
     
     def on_success(self, f, s):
-        self.base_render("intro.html", first=f, second=s)
+        self.base_render("intro.html", first=f, second=s, current_user_votes=[])
     
 class VoteHandler(base.BaseHandler):
     
@@ -63,6 +63,8 @@ class VoteHandler(base.BaseHandler):
     def on_post(self):
         sid = self.get_argument("sid", None)
         vi = VideoItem.objects(id=sid).get()
+        current_user = self.get_current_user()
+        current_user.record_vote(sid)
         vi.upvote()
 
 class SubmitCoverHandler(base.BaseHandler):
@@ -130,6 +132,11 @@ class UserPromotionHandler(base.BaseHandler):
     '''
     def on_get(self, *args, **kwargs):
         sid = self.get_argument("cover")
+        user = self.get_current_user()
+        current_user_votes = []
+        if user:
+            current_user_votes = user.voted_for
+        
         songs =  [item for item in VideoItem.objects if str(item.id) != sid]
         shuffle(songs)
         vi = VideoItem.objects(id=sid).get()
@@ -162,7 +169,7 @@ class UserPromotionHandler(base.BaseHandler):
         first_selection.flagged_as_seen()
         second_selection.flagged_as_seen() 
           
-        return first_selection, second_selection
+        return first_selection, second_selection, current_user_votes
 
-    def on_success(self, f, s):
-        self.base_render("intro.html", first=f, second=s)   
+    def on_success(self, f, s, cuv):
+        self.base_render("intro.html", first=f, second=s, current_user_votes=cuv)   
