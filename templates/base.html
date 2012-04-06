@@ -58,9 +58,12 @@
 	        <ul class="nav">
 	          <li id="home-btn" class="active"><a href="/">Home</a></li>
 	          <li><a id="rankings-btn" href="/rankings">Top Covers</a></li>
-	          <li><a id="submit-btn" href="/submit">Submit Cover</a></li>
-		      {%if current_user%}
-           	  <li><a href="/logout">Log out</a></li>
+      		  {%if not current_user%}
+           	  	<li><a href="/submit">Register/Sign-in</a></li>
+		      {%end%}
+		      {%if current_user%}	
+	            <li><a id="submit-btn" href="/submit">Submit Cover</a></li>
+           	  	<li><a href="/logout">Log out</a></li>
 		      {%end%}
 	        </ul>
 	          <div style="position:relative; float:right; top:8px;" id="twitter-follow-btn">
