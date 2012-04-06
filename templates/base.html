@@ -37,7 +37,9 @@
 	
     <link href="{{static_url('css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{static_url('css/bootstrap-responsive.css')}}" rel="stylesheet">
-	
+	<style type="text/css">
+		body { background-repeat:repeat-x repeat-y; background-image:url('/static/imgs/back-texture.png');}
+	</style>	
 </head> 
 
 <body >
@@ -60,9 +62,11 @@
 		      {%if current_user%}
            	  <li><a href="/logout">Log out</a></li>
 		      {%end%}
-         	  <li><a href="https://twitter.com/youcoverme" class="twitter-follow-button" data-show-count="false">Follow @youcoverme</a>
-              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li>
 	        </ul>
+	          <div style="position:relative; float:right; top:8px;" id="twitter-follow-btn">
+	              <a href="https://twitter.com/youcoverme" class="twitter-follow-button" data-show-count="false">Follow @youcoverme</a>
+	              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+              </div>
 	      </div><!--/.nav-collapse -->
 	    </div>
 	  </div>
@@ -72,7 +76,8 @@
 
 {% end %}
 	<div class="container">
-		<hr>	
+		<hr style="border-color:#E0E0E0 ;">	
+     	<p style="poistion:relative; float:left;">Vote the best covers and discover new talent.</p>
 		<footer style="position: relative; float:right">
 		  <p style="display:inline; padding:5px;" >&copy; YouCover.Me 2012</p>&middot;
 		  <a style="display:inline; padding:5px;" href="/terms">Terms</a>&middot;

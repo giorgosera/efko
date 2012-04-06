@@ -18,19 +18,25 @@
 	<div class="container">
 		  <!-- Main hero unit for a primary marketing message or call to action -->
 		<div class="alert alert-info">
+		<div style="position:relative; float:right; top: 7px; right:-60px;" id="share-btns">
+	        <a name="fb_share" type="button" share_url="youcover.me" style="position:relative; left:-2px;top:-6px;"></a> 
+			<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+			        type="text/javascript">
+			</script>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-count= "None" data-url="youcover.me" data-text="I just compared two covers on www.youcover.me" data-via="youcoverme">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</div>
 		  <h1 class="alert-heading" style="top:200px">"{{kwargs['first'].original_title}}" by {{kwargs['first'].artist}} </h1>
-		  <p>Vote for the best cover or <a class="btn btn-primary btn-mini" href="/submit">submit</a> your own and become a member of our growing community! Tell your friends about us
-	        	<a name="fb_share" type="button" share_url="youcover.me" style="position:relative; left:-2px;top:0px;"></a> 
-				<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
-				        type="text/javascript">
-				</script>
-		  </p>
+		  <p><div id="submit-btn-container" style="position:relative; bottom:4px; display:inline;"><a class="btn btn-primary btn-mini" href="/submit">Submit</a></div> your own covers and become a member of our growing community!</p>
 		</div>
 		
-		     <!-- Example row of columns -->
+		  <!-- Example row of columns -->
 		   <div class="row">
 		     <div class="span6">
-		       <h2>{{kwargs['first'].uploader}}  <a class="btn btn-danger" href="{{kwargs['first'].uploader_url}}" target="_blank">Visit channel</a> <span id="votes-first" style="display:none" class="badge badge-inverse">{{kwargs['first'].upvotes}} votes</span></h2>
+		       <h2>{{kwargs['first'].uploader}}  
+		       		<div id="visit-first-channel-btn" style="position:relative; bottom:6px; display:inline;"><a class="btn btn-danger" href="{{kwargs['first'].uploader_url}}" target="_blank">Visit channel</a></div> 
+		       		<div id="votes-first-container" style="position:relative; bottom:6px; display:inline;"><span id="votes-first" style="display:none" class="badge badge-inverse">{{kwargs['first'].upvotes}} votes</span></div>
+		       	</h2>
 		<object width="100%" height="400">
 		  <param name="movie"
 		         value="{{kwargs['first'].url}}"></param>
@@ -41,10 +47,13 @@
 		          width="100%" height="400"></embed>
 		</object>
 		        <p></p>
-		       <p align="center"><a sid="{{kwargs['first'].id}}" class="btn btn-success" style="width:200px; height:30px; vertical-align: middle; font-size:x-large">&#10003; Vote<i class="icon-ok-circle"></i></a></p>
+		       <p align="center"><a sid="{{kwargs['first'].id}}" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large">&#10003; Vote<i class="icon-ok-circle"></i></a></p>
 		     </div>
 		     <div class="span6">
-		       <h2>{{kwargs['second'].uploader}}  <a class="btn btn-danger" href="{{kwargs['second'].uploader_url}}" target="_blank">Visit channel</a> <span id="votes-second" style="display:none" class="badge badge-inverse">{{kwargs['second'].upvotes}} votes</span></h2>
+		       <h2>{{kwargs['second'].uploader}}  
+					<div id="visit-second-channel-btn" style="position:relative; bottom:6px; display:inline;"><a class="btn btn-danger" href="{{kwargs['second'].uploader_url}}" target="_blank">Visit channel</a></div> 
+		       		<div id="votes-second-container" style="position:relative; bottom:6px; display:inline;"><span id="votes-second" style="display:none" class="badge badge-inverse">{{kwargs['second'].upvotes}} votes</span></div>
+		       	</h2>
 		<object width="100%" height="400">
 		  <param name="movie"
 		         value="{{kwargs['second'].url}}"></param>
@@ -55,7 +64,7 @@
 		          width="100%" height="400"></embed>
 		</object>
 		        <p></p>
-		       <p align="center"><a sid="{{kwargs['second'].id}}" class="btn btn-success" style="width:200px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+		       <p align="center"><a sid="{{kwargs['second'].id}}" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
 		    </div>
 		   </div>
 		   
@@ -63,20 +72,9 @@
 		      <form action="/next" method="get">
 		      {% raw xsrf_form_html() %}
 		      </br>
-	       	  <p><input type="submit" value="Nex battle &raquo;" id="next-cover-btn" class="btn btn-inverse btn-large" style="width: 240px; font-size:x-large"></p>
-	       	  <a style="background-color: #00529E;" class="btn btn-primary" title="send to Facebook" href="http://www.facebook.com/sharer.php?s=100&p[title]=Cover battle&p[summary]=I voted on this battle on youcover.me&p[url]='youcover.me'&p[images][0]=YOUR_IMAGE_TO_SHARE_OBJECT"><span><img width="14" height="14" src="'icons/fb.gif" alt="Facebook" /> Facebook></a> 
+	       	  <p><input type="submit" value="Next battle &raquo;" id="next-cover-btn" class="btn btn-inverse btn-large" style="width: 240px; font-size:x-large"></p> 
 	       	  </form>	
 	       </div>
-			
-			<div id="share-btns">
-		        <a name="fb_share" type="button" share_url="youcover.me" style="position:relative; left:-2px;top:-6px;"></a> 
-				<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
-				        type="text/javascript">
-				</script>
-	
-				<a href="https://twitter.com/share" class="twitter-share-button" data-count= "None" data-url="youcover.me" data-text="I just compared two covers on www.youcover.me" data-via="youcoverme">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</div>
 	 </div> <!-- /container -->
 {% else %}
 	No songs to play! Move along
