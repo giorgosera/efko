@@ -18,6 +18,7 @@ class HomePageHandler(base.BaseHandler):
     Check user status and either load the home screen or the
     welcome page.
     '''
+    
     def on_get(self):
         songs = [item for item in VideoItem.objects if not item.viewed]
         shuffle(songs)
@@ -57,7 +58,8 @@ class HomePageHandler(base.BaseHandler):
         self.base_render("intro.html", first=f, second=s)
     
 class VoteHandler(base.BaseHandler):
-
+    
+    @tornado.web.authenticated
     def on_post(self):
         sid = self.get_argument("sid", None)
         vi = VideoItem.objects(id=sid).get()

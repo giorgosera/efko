@@ -47,7 +47,11 @@
 		          width="100%" height="400"></embed>
 		</object>
 		        <p></p>
-		       <p align="center"><a sid="{{kwargs['first'].id}}" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large">&#10003; Vote<i class="icon-ok-circle"></i></a></p>
+		        {%if current_user%}
+			       <p align="center"><a sid="{{kwargs['first'].id}}" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+			    {%else%}
+			    <p align="center"><a sid="{{kwargs['first'].id}}" href="/submit" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+			    {%end%}
 		     </div>
 		     <div class="span6">
 		       <h2>{{kwargs['second'].uploader}}  
@@ -64,10 +68,13 @@
 		          width="100%" height="400"></embed>
 		</object>
 		        <p></p>
-		       <p align="center"><a sid="{{kwargs['second'].id}}" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+		        {%if current_user%}
+			       <p align="center"><a sid="{{kwargs['second'].id}}" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+			    {%else%}
+			    <p align="center"><a sid="{{kwargs['second'].id}}" href="/submit" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+			    {%end%}
 		    </div>
 		   </div>
-		   
 		   <div style="text-align: center;">
 		      <form action="/next" method="get">
 		      {% raw xsrf_form_html() %}

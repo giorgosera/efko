@@ -14,7 +14,6 @@
 			 {sid : sid},
 			 true,
 			 function(response) {
-				console.log("Vote casted")
 				$("a.btn-success").attr("disabled", "disabled");
 				$("#votes-first").attr("style", "display:inline");
 				$("#votes-second").attr("style", "display:inline");
