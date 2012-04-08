@@ -20,6 +20,7 @@ class HomePageHandler(base.BaseHandler):
     '''
     
     def on_get(self):
+        print self.get_current_user().covers_submitted
         songs = [item for item in VideoItem.objects if not item.viewed]
         shuffle(songs)
         first_selection = songs.pop(0)
@@ -116,6 +117,9 @@ class SubmitCoverHandler(base.BaseHandler):
                 vi.artist = artist
                 vi.genre = genre            
                 vi.save()
+                user = self.get_current_user()
+                user.record_submission(str(vi.id))
+
                 msg = "The cover was submitted successfully."
                 share_url = "youcover.me/voteforthis?cover="+str(vi.id)
             else:

@@ -16,7 +16,7 @@ class User(Document):
     email = StringField(required=True)
     password = StringField(required=True, default="")
     salt = StringField(required=True, default="")
-    covers = ListField(StringField(), default=list)
+    covers_submitted = ListField(StringField(), default=list)
     voted_for = ListField(StringField(), default=list)
         
     def create_password(self, password):
@@ -45,9 +45,13 @@ class User(Document):
             return True
     
     def record_vote(self, sid):
-        
         if sid not in self.voted_for:
             self.voted_for.append(sid)
+            self.save()
+
+    def record_submission(self, sid):
+        if sid not in self.covers_submitted:
+            self.covers_submitted.append(sid)
             self.save()
         
 class CachedUser(EmbeddedDocument):
