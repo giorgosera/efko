@@ -20,7 +20,6 @@ class HomePageHandler(base.BaseHandler):
     '''
     
     def on_get(self):
-        print self.get_current_user().covers_submitted
         songs = [item for item in VideoItem.objects if not item.viewed]
         shuffle(songs)
         first_selection = songs.pop(0)
