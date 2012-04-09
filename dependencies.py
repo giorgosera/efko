@@ -6,7 +6,7 @@
 css_deps = ("css", "css",
             [
              ("/login/google", ["bootstrap.css"]),
-             ("/", ["bootstrap.css", "bootstrap-responsive.css"])
+             ("/", ["base.css", "bootstrap.css", "bootstrap-responsive.css"])
             ])
 
 # JS Dependencies.

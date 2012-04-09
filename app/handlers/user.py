@@ -30,7 +30,7 @@ class UserLoginHandler(base.BaseHandler):
         if success:
             self.clear_cookie("email")
             self.set_secure_cookie("email", user.email)
-            self.base_render("submit.html")
+            self.redirect('/')
         else:
             msg_password = "Incorrect password"
             self.base_render("login.html", msg_username=msg_username, msg_password=msg_password)        
@@ -71,7 +71,7 @@ class UserRegistrationHandler(base.BaseHandler, tornado.auth.GoogleMixin):
             u.save()
             self.clear_cookie("email")
             self.set_secure_cookie("email", u.email)
-            self.base_render("submit.html")
+            self.redirect('/')
         else:
             msg = "Username or email already registered"
             self.base_render("register.html", first=first_name, last=last_name, email=email, msg=msg)

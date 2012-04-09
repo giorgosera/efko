@@ -40,8 +40,10 @@
 		<object width="100%" height="400">
 		  <param name="movie"
 		         value="{{kwargs['first'].url}}"></param>
+		  <param name="wmode" value="opaque"></param>
 		  <param name="allowScriptAccess" value="always"></param>
 		  <embed src="{{kwargs['first'].url}}"
+				 wmode = "transparent"
 		         type="application/x-shockwave-flash"
 		         allowscriptaccess="always"
 		          width="100%" height="400"></embed>
@@ -65,8 +67,10 @@
 		<object width="100%" height="400">
 		  <param name="movie"
 		         value="{{kwargs['second'].url}}"></param>
+          <param name="wmode" value="opaque"></param>
 		  <param name="allowScriptAccess" value="always"></param>
 		  <embed src="{{kwargs['second'].url}}"
+				  wmode = "transparent"
 		         type="application/x-shockwave-flash"
 		         allowscriptaccess="always"
 		          width="100%" height="400"></embed>
