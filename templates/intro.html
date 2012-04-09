@@ -19,7 +19,7 @@
 		  <!-- Main hero unit for a primary marketing message or call to action -->
 		<div class="alert alert-info">
 		<div style="position:relative; float:right; top: 7px; right:-60px;" id="share-btns">
-	        <a name="fb_share" type="button" share_url="youcover.me" style="position:relative; left:-2px;top:-6px;"></a> 
+	        <a name="fb_share" share_url="youcover.me" style="position:relative; left:-2px;top:-6px;"></a> 
 			<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
 			        type="text/javascript">
 			</script>
@@ -56,7 +56,7 @@
     				   <p align="center"><a sid="{{kwargs['first'].id}}" class="btn btn-success" disabled="disabled" style=" width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
     			   {%end%}
 			    {%else%}
-			    <p align="center"><a sid="{{kwargs['first'].id}}" href="/submit" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+			    <p align="center"><a sid="{{kwargs['first'].id}}" id="non-autenticated-vote" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
 			    {%end%}
 		     </div>
 		     <div class="span6">
@@ -83,7 +83,7 @@
     				   <p align="center"><a sid="{{kwargs['second'].id}}" class="btn btn-success" disabled="disabled" style=" width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
     			   {%end%}
 			    {%else%}
-			    	<p align="center"><a sid="{{kwargs['second'].id}}" href="/submit" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
+			    	<p align="center"><a sid="{{kwargs['second'].id}}" id="non-autenticated-vote" class="btn btn-success" style="width:150px; height:30px; vertical-align: middle; font-size:x-large"><i class="icon-ok-circle"></i> Vote &#10003;</a></p>
 			    {%end%}
 		    </div>
 		   </div>
@@ -99,6 +99,16 @@
 	No songs to play! Move along
 {% end %}
 
-
 {% end%}
 
+{% block jquery_templates %}
+	<script id="registration-popup-template" type="text/x-jquery-tmpl">
+		<div style="padding: 15px 25px 15px 25px; background-color: #d9edf7;">
+			<h1>Sign-in and discover new musical talent or submit your own covers.</h1>
+			<h3>Registration is <strong>free</strong> and it takes just a second!</h3>
+			<br><br>
+			<a class="btn btn-primary" href="/register/google">Register</a>	or <a href="/login" class="btn btn-primary">Login</a>
+			<a id="close-registration-popup" style="position:relative; float:right;" class="btn btn-primary">No, thanks</a>
+		</div>	
+	</script>
+{% end %}

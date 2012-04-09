@@ -15,6 +15,7 @@ js_deps = ("js", "js",
              ("/register/google/*", ["user.js"]),
              ("/thisisasecreturl18211281", ["admin.js"]),
 	         ("/rankings", ["/libs/twitter/*"]),
-             ("/", ["home.js", "submit.js"])  		
+             ("/", ["home.js", "submit.js", "libs/jquery.tmpl.min.js", "libs/jquery.wysiwyg.js", 
+                    "libs/jquery.tipsy.js","libs/jquery.autogrow.js"])  		
 	        ])
 

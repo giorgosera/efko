@@ -9,8 +9,9 @@
     
     $("a.btn-success").live("click", function() {
 	sid = $(this).attr("sid");
-	CYP.errorNotifier.show("Hi")
 	if (! $(this).attr("disabled")) {
+		var tmpl = $("#registration-popup-template").tmpl();
+		CYP.popup.show(tmpl);
 		CYP.post("/vote", 
 			 {sid : sid},
 			 true,
@@ -22,6 +23,13 @@
 	}
     });
 
+
+    $("#non-autenticated-vote").live("click", function() {
+	var tmpl = $("#registration-popup-template").tmpl();
+	CYP.popup.show(tmpl);
+    });
+
+
     $("#next-cover-btn").live("click", function() {
 	CYP.get("/next", 
 		 true,
@@ -29,6 +37,12 @@
 		     console.log("new videos");
 		 });
     });
+
+    $("#close-registration-popup").live("click", function() {
+	CYP.popup.close();
+    });
+
+
 
 
     

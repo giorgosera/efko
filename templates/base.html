@@ -89,6 +89,10 @@
 		</footer>	
 	</div>
 	{% raw xsrf_form_html() %}
+	
+{% block jquery_templates %}
+{% end %}
+
 {% block scripts %}
 	{% for css in kwargs['css_deps'] %}
 		<link rel="stylesheet" href="{{static_url(css)}}" type="text/css" />

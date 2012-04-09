@@ -21,6 +21,13 @@
 	}
     });
 
+
+    $("#non-autenticated-vote").live("click", function() {
+	var tmpl = $("#registration-popup-template").tmpl();
+	CYP.popup.show(tmpl);
+    });
+
+
     $("#next-cover-btn").live("click", function() {
 	CYP.get("/next", 
 		 true,
@@ -28,6 +35,12 @@
 		     console.log("new videos");
 		 });
     });
+
+    $("#close-registration-popup").live("click", function() {
+	CYP.popup.close();
+    });
+
+
 
 
     
