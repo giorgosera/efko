@@ -111,11 +111,14 @@ class SubmitCoverHandler(base.BaseHandler):
                 vi.uploader = video_entry.author[0].name.text
                 user_entry = yt_service.GetYouTubeUserEntry(username=vi.uploader)
                 vi.uploader_url = user_entry.link[0].href
-                tags = video_entry.media.keywords.text
+                tags = unicode(video_entry.media.keywords.text, "utf-8")
                 vi.tags = tags.split(', ')
                 vi.artist = artist
-                vi.genre = genre            
-                vi.save()
+                vi.genre = genre
+                try:               
+                    vi.save()
+                except Exception, e:
+                    print e
                 user = self.get_current_user()
                 user.record_submission(str(vi.id))
 
