@@ -14,8 +14,8 @@ class User(Document):
     first_name = StringField(required=True)
     last_name = StringField(required=True)
     email = StringField(required=True)
-    password = StringField(required=True, default="")
-    salt = StringField(required=True, default="")
+    password = StringField(required=False, default="")
+    salt = StringField(required=False, default="")
     covers_submitted = ListField(StringField(), default=list)
     voted_for = ListField(StringField(), default=list)
         
@@ -53,7 +53,10 @@ class User(Document):
         if sid not in self.covers_submitted:
             self.covers_submitted.append(sid)
             self.save()
-        
+    
+class FacebookUser(User):
+    meta = {"collection": "FBUsers"}
+    
 class CachedUser(EmbeddedDocument):
     name = StringField(required=True)
     id = ObjectIdField(required=True)

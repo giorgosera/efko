@@ -85,19 +85,32 @@ class UserFBRegistrationHandler(base.BaseHandler, tornado.auth.FacebookGraphMixi
     def get(self):
         if self.get_argument("code", False):
             self.get_authenticated_user(
-              redirect_uri='http://youcover.me/register/facebook',
+              redirect_uri='http://localhost:8888/register/facebook',
               client_id=self.settings["facebook_api_key"],
               client_secret=self.settings["facebook_secret"],
               code=self.get_argument("code"),
               callback=self.async_callback(
                 self._on_login))
             return
-        self.authorize_redirect(redirect_uri='http://youcover.me/register/facebook',
+        
+        self.authorize_redirect(redirect_uri='http://localhost:8888/register/facebook',
                                 client_id=self.settings["facebook_api_key"],
                                 extra_params={"scope": "read_stream,offline_access"})
     
     def _on_login(self, user):
-        self.finish()
+        u = FacebookUser.objects(email=user['link'])
+        if len(u) == 0:
+            new_u = FacebookUser()
+            new_u.first_name = user['first_name']
+            new_u.last_name = user['last_name']
+            new_u.email = user['link'] #I use the url of the user profile as email
+            new_u.username = new_u.first_name + new_u.last_name
+            new_u.save()
+            self.set_secure_cookie("email", new_u.email)
+        else:
+            u = u.get()
+            self.set_secure_cookie("email", u.email)
+        self.redirect("/")
 
 class UserLogoutHandler(base.BaseHandler):
     '''
