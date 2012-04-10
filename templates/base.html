@@ -37,14 +37,16 @@
 	
     <link href="{{static_url('css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{static_url('css/bootstrap-responsive.css')}}" rel="stylesheet">
+   	{% for css in kwargs['css_deps'] %}
+		<link rel="stylesheet" href="{{static_url(css)}}" type="text/css" />
+	{% end %}
 	<style type="text/css">
 		body { background-repeat:repeat-x repeat-y; background-image:url('/static/imgs/back-texture.png');}
 	</style>	
 </head> 
 
-<body >
-{% block header %}
-
+<body >	
+{% block header %}	
 	<div class="navbar navbar-fixed-top">
 	  <div class="navbar-inner">
 	    <div class="container">
@@ -75,9 +77,8 @@
 	  </div>
 	</div>
 {% end %}
-{% block content %}
 
-{% end %}
+{% block content %}
 	<div class="container">
 		<hr style="border-color:#E0E0E0 ;">	
      	<p style="poistion:relative; float:left;">Vote the best covers and discover new talent.</p>
@@ -89,15 +90,13 @@
 		</footer>	
 	</div>
 	{% raw xsrf_form_html() %}
+{% end %}
+
 	
 {% block jquery_templates %}
 {% end %}
 
-{% block scripts %}
-	{% for css in kwargs['css_deps'] %}
-		<link rel="stylesheet" href="{{static_url(css)}}" type="text/css" />
-	{% end %}
-	
+{% block scripts %}	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
   	<script>!window.jQuery && document.write(unescape('%3Cscript src="{{static_url("js/libs/jquery-1.5.1.min.js")}}"%3E%3C/script%3E'))</script>
@@ -106,7 +105,7 @@
 	<script src="{{static_url('js/CYP.js')}}"></script>
 	{% for js in kwargs['js_deps'] %}
 		<script src="{{static_url(js)}}"></script>
-	{% end %}
+	{% end %}	
 {% end %}
 
 

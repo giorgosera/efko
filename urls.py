@@ -25,5 +25,6 @@ url_patterns = [
     ("/logout", user.UserLogoutHandler),
     ("/login/info", user.UserLoginHandler),
     ("/register/google", user.UserRegistrationHandler),
-    ("/register/google/info", user.UserRegistrationHandler)
+    ("/register/google/info", user.UserRegistrationHandler),
+    ("/register/facebook", user.UserFBRegistrationHandler)
 ]

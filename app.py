@@ -23,7 +23,9 @@ class Youcoverme(tornado.web.Application):
                     'cookie_secret' : "aKlRsPkySWyOqByxAQfLsKMbEAKj3ErRtg1RgkBUQ6E=noteslib",
                     'login_url'     : "/register", #landing page if user is not authenticated
                     'xsrf_cookies'  : True,
-                    'autoescape'    : "xhtml_escape"
+                    'autoescape'    : "xhtml_escape",
+                    'facebook_api_key': "301107653292393",
+                    'facebook_secret': "49acde9b4ccc9a22cb71d0813a3e5030"
                     }
 
 	config = ConfigParser.RawConfigParser()
